@@ -1,0 +1,72 @@
+.dm-form__label.radio {
+  display: inline;
+  margin-left: 1em;
+  font-weight: 300;
+}
+.dm-form__label.radio-title {
+  margin-bottom: 0.3em;
+}
+.dm-form__radio-group {
+  margin-bottom: 1rem;
+}
+
+.dm-contribute-form__song-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dm-contribute-form__song-list-item {
+  list-style: none;
+  padding: 0.5rem 1rem;
+  border: 2px solid #ddd;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+}
+
+.dm-contribute-form__song-list-item.selected {
+  border-color: yellow;
+}
+.dm-contribute-form__song-list-item.error,
+.dm-contribute-form__song-list-item.error.selected {
+  border-color: red;
+}
+
+.dm-contribute-form__tab-buttons-wrapper {
+  display: flex;
+  margin: 0 -1rem;
+  margin-bottom: 1rem;
+}
+
+.dm-contribute-form__tab-buttons-wrapper > .dm-button {
+  border: 3px solid #ddd;
+  margin: 0 1rem;
+}
+.dm-contribute-form__tab-buttons-wrapper > .dm-button.selected {
+  border-color: yellow;
+}
+
+.dm-contribute-form__tab-buttons-wrapper > .dm-button.error,
+.dm-contribute-form__tab-buttons-wrapper > .dm-button.error.selected {
+  border-color: red;
+}
+
+.display-none {
+  display: none;
+}
+
+.dm-contribute-form__song-tab-buttons-wrapper {
+  display: flex;
+  margin: 0 -1rem;
+}
+
+.dm-contribute-form__song-tab-buttons-wrapper > .dm-button {
+  margin: 0 1rem;
+}
+
+.dm-form__input-field.error,
+.dm-form__label.radio.error {
+  border-color: red;
+}
