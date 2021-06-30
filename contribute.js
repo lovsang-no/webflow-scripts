@@ -421,7 +421,8 @@ const initializeContributeForm = () => {
       }
     }
 
-    if (validateCallback) state.currentSong.validState = validateCallback();
+    if (validateCallback && state.currentSong)
+      state.currentSong.validState = validateCallback();
   };
 
   const SongList = (renderCallback) => {
@@ -878,6 +879,10 @@ const initializeContributeForm = () => {
     SongsTabButton.innerHTML = "Steg 3 - Sanger";
     TabButtonsWrapper.appendChild(SongsTabButton);
 
+    const AttatchmentsTabButton = Element("a", "dm-button");
+    AttatchmentsTabButton.innerHTML = "Steg 4 - Vedlegg";
+    TabButtonsWrapper.appendChild(AttatchmentsTabButton);
+
     const RightButtonWraper = Element(
       "div",
       "dm-contribute-form__tab-buttons-wrapper"
@@ -916,6 +921,10 @@ const initializeContributeForm = () => {
     TabContentWrapper.appendChild(albumTabContent.TabWrapper);
     const songsTabContent = SongsTab();
     TabContentWrapper.appendChild(songsTabContent.TabWrapper);
+    const AttatchmentsTabContent = document.getElementById(
+      "js-contribute-form-attatchments-tab"
+    );
+    AttatchmentsTabContent.parentNode = TabContentWrapper;
 
     const tabState = {
       currentTabIndex: 0,
@@ -950,6 +959,11 @@ const initializeContributeForm = () => {
           },
           setCallback: songsTabContent.setTabRenderCallback,
         },
+        {
+          index: 3,
+          DOMButton: AttatchmentsTabButton,
+          DOMContent: AttatchmentsTabContent,
+        },
       ],
     };
 
@@ -958,7 +972,7 @@ const initializeContributeForm = () => {
         if (tab.index === tabState.currentTabIndex) {
           tab.DOMButton.classList.add("selected");
           tab.DOMContent.classList.remove("display-none");
-          if (tab.hasValidState()) {
+          if (tab.hasValidState && tab.hasValidState()) {
             tab.DOMButton.classList.remove("error");
           } else {
             tab.DOMButton.classList.add("error");
@@ -966,7 +980,7 @@ const initializeContributeForm = () => {
         } else {
           tab.DOMButton.classList.remove("selected");
           tab.DOMContent.classList.add("display-none");
-          if (tab.hasValidState()) {
+          if (tab.hasValidState && tab.hasValidState()) {
             tab.DOMButton.classList.remove("error");
           } else {
             tab.DOMButton.classList.add("error");
@@ -981,7 +995,7 @@ const initializeContributeForm = () => {
         renderState();
       };
 
-      tabObject.setCallback(renderState);
+      if (tabObject.setCallback) tabObject.setCallback(renderState);
     });
 
     renderState();

@@ -16,6 +16,7 @@
   margin: 0;
 }
 .dm-contribute-form__song-list-item {
+  position: relative;
   list-style: none;
   padding: 0.5rem 1rem;
   border: 2px solid #ddd;
@@ -29,9 +30,17 @@
 .dm-contribute-form__song-list-item.selected {
   border-color: yellow;
 }
-.dm-contribute-form__song-list-item.error,
-.dm-contribute-form__song-list-item.error.selected {
-  border-color: red;
+.dm-contribute-form__song-list-item.error::after,
+.dm-contribute-form__song-list-item.error.selected::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: -6px;
+  border: 2px solid red;
+  border-radius: 0.7rem;
 }
 
 .dm-contribute-form__tab-buttons-wrapper {
@@ -41,6 +50,7 @@
 }
 
 .dm-contribute-form__tab-buttons-wrapper > .dm-button {
+  position: relative;
   border: 3px solid #ddd;
   margin: 0 1rem;
 }
@@ -48,9 +58,17 @@
   border-color: yellow;
 }
 
-.dm-contribute-form__tab-buttons-wrapper > .dm-button.error,
-.dm-contribute-form__tab-buttons-wrapper > .dm-button.error.selected {
-  border-color: red;
+.dm-contribute-form__tab-buttons-wrapper > .dm-button.error::after,
+.dm-contribute-form__tab-buttons-wrapper > .dm-button.error.selected::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: -6px;
+  border: 2px solid red;
+  border-radius: 0.9rem;
 }
 
 .display-none {
@@ -69,4 +87,8 @@
 .dm-form__input-field.error,
 .dm-form__label.radio.error {
   border-color: red;
+}
+
+.dm-song-list-item-wrapper.dm-contribute-form__song-list-item:last-child {
+  border-bottom-style: solid;
 }
