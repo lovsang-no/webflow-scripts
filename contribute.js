@@ -11,6 +11,7 @@ const initializeContributeForm = () => {
   let state = {
     artist: {
       name: "",
+      about: "",
       location: "",
       church: "",
       connectedArtists: "",
@@ -85,6 +86,41 @@ const initializeContributeForm = () => {
 
   retrieveStateFromLocalStorage();
 
+  const artistStateToCSVString = () => {
+    const headings =
+      "Navn," +
+      "Slug," +
+      "Tilhørighet," +
+      "Egen nettside med ressurser," +
+      "Eventuel beskrivelse av artist," +
+      "Facebook," +
+      "Instagram," +
+      "iTunes / Apple Music," +
+      "YouTube," +
+      "Vimeo," +
+      "Spotify," +
+      "Tilknyttet artist," +
+      "Sted,";
+
+    const row = [];
+    const a = state.artist;
+    row.push(a.name); // "Navn," +
+    row.push(a.name.toLowerCase().replace(/ +/g, "-")); // "Slug," +
+    row.push(a.church); // "Tilhørighet," +
+    row.push(a.linkWebpage); // "Egen nettside med ressurser," +
+    row.push(a.about); // "Eventuel beskrivelse av artist," +
+    row.push(a.linkFacebook); // "Facebook," +
+    row.push(a.linkInstagram); // "Instagram," +
+    row.push(a.linkAppleMusic); // "iTunes / Apple Music," +
+    row.push(a.linkYouTube); // "YouTube," +
+    row.push(a.linkVimeo); // "Vimeo," +
+    row.push(a.linkSpotify); // "Spotify," +
+    row.push(a.connectedArtists); // "Tilknyttet artist," +
+    row.push(a.location); // "Sted,"
+
+    return headings + "\n" + row.join(",");
+  };
+
   const albumStateToCSVString = () => {
     const headings =
       "Albumtittel - Artist," +
@@ -102,7 +138,7 @@ const initializeContributeForm = () => {
     const row = [];
     const a = state.album;
     row.push(a.title + " - " + a.artist); // "Albumtittel - Artist," +
-    row.push((a.title + " " + a.artist).toLowerCase().replace(/  +/g, "-")); // "Slug," +
+    row.push((a.title + " " + a.artist).toLowerCase().replace(/ +/g, "-")); // "Slug," +
     row.push(a.title); // "Albumtittel," +
     row.push(a.artist); // "Artist(er) - tekst," +
     row.push(a.releaseDate); // "Utgivelsesdato," +
@@ -115,13 +151,93 @@ const initializeContributeForm = () => {
     return headings + "\n" + row.join(",");
   };
 
+  const songsStateToCSVString = () => {
+    const headings =
+      "Sangtittel - Artist," +
+      "Slug," +
+      "Sangtittel," +
+      "Artist(er) - tekst," +
+      "Album," +
+      "Utgivelsesdato," +
+      "Type sang," +
+      "Sangnummer," +
+      "Tema," +
+      "Om sangen," +
+      "Anbefalte tonearter," +
+      "Bibelreferanse(r)," +
+      "Låtskrivere," +
+      "Produsenter," +
+      "Bidragsytere (tekst)," +
+      "Link: Spotify," +
+      "Link: Spotify II," +
+      "iTunes / Apple Music," +
+      "Original toneart," +
+      "Tempo," +
+      "Taktart," +
+      "ChordPro-fil," +
+      "Dagens refreng,";
+
+    const rows = [];
+
+    const artist = state.artist;
+    const album = state.album;
+
+    state.songs.forEach((s) => {
+      const row = [];
+      row.push(s.title + " - " + s.artist); // "Sangtittel - Artist," +
+      row.push((s.title + " " + s.artist).toLowerCase().replace(/ +/g, "-")); // "Slug," +
+      row.push(s.title); // "Sangtittel," +
+      row.push(s.artist); // "Artist(er) - tekst," +
+      row.push(album.title); // "Album," +
+      row.push(album.releaseDate); // "Utgivelsesdato," +
+      row.push(s.songType); // "Type sang," +
+      row.push(s.songNumber); // "Sangnummer," +
+      row.push(""); // "Tema," + // TODO: Implement themes
+      row.push(s.aboutSong); // "Om sangen," +
+      row.push(s.recommendedKeys); // "Anbefalte tonearter," +
+      row.push(s.scripture); // "Bibelreferanse(r)," +
+      row.push(s.writers); // "Låtskrivere," +
+      row.push(s.producers); // "Produsenter," +
+      row.push(s.contributors); // "Bidragsytere (tekst)," +
+      row.push(s.linkSpotify); // "Link: Spotify," +
+      row.push(s.linkSpotify); // "Link: Spotify II," +
+      row.push(s.linkAppleMusic); // "iTunes / Apple Music," +
+      row.push(""); // "Original toneart," + // TODO
+      row.push(""); // "Tempo," + // TODO
+      row.push(""); // "Taktart," + // TODO
+      row.push(""); // "ChordPro-fil," + // TODO
+      row.push(""); // "Dagens refreng," + // TODO: implement
+
+      rows.push(row.join(","));
+    });
+
+    /* row.push(a.title + " - " + a.artist); // "Albumtittel - Artist," +
+    row.push((a.title + " " + a.artist).toLowerCase().replace(/ +/g, "-")); // "Slug," +
+    row.push(a.title); // "Albumtittel," +
+    row.push(a.artist); // "Artist(er) - tekst," +
+    row.push(a.releaseDate); // "Utgivelsesdato," +
+    row.push(a.producers); // "Produsent(er)," +
+    row.push(a.label); // "Ansvarlig utgiver," +
+    row.push(removeHash(a.linkTracks)); // "Tracks," +
+    row.push(removeHash(a.linkAppleMusic)); // "Link til album på iTunes," +
+    row.push(removeHash(a.linkSpotify)); // "Spotify"; */
+
+    return headings + "\n" + rows.join(",");
+  };
+
   const Element = (elementType, ...classes) => {
     const DOMElement = document.createElement(elementType);
     for (const c of classes) DOMElement.classList.add(c);
     return DOMElement;
   };
 
-  const InputWithLabel = ({ name, id, labelText, required }) => {
+  const InputWithLabel = ({
+    name,
+    id,
+    labelText,
+    detailesLabelText,
+    required,
+  }) => {
     const Wrapper = Element("div");
 
     const Label = Element("label", "dm-form__label");
@@ -134,12 +250,28 @@ const initializeContributeForm = () => {
     Input.required = required ?? false;
 
     Wrapper.appendChild(Label);
+
+    if (detailesLabelText) {
+      const DetailedLabel = Element(
+        "div",
+        "dm-contribute-form__detailed-label"
+      );
+      DetailedLabel.innerHTML = detailesLabelText;
+      Wrapper.appendChild(DetailedLabel);
+    }
+
     Wrapper.appendChild(Input);
 
     return Wrapper;
   };
 
-  const NumberInputWithLabel = ({ name, id, labelText, required }) => {
+  const NumberInputWithLabel = ({
+    name,
+    id,
+    labelText,
+    detailesLabelText,
+    required,
+  }) => {
     const Wrapper = Element("div");
 
     const Label = Element("label", "dm-form__label");
@@ -153,12 +285,28 @@ const initializeContributeForm = () => {
     Input.required = required ?? false;
 
     Wrapper.appendChild(Label);
+
+    if (detailesLabelText) {
+      const DetailedLabel = Element(
+        "div",
+        "dm-contribute-form__detailed-label"
+      );
+      DetailedLabel.innerHTML = detailesLabelText;
+      Wrapper.appendChild(DetailedLabel);
+    }
+
     Wrapper.appendChild(Input);
 
     return Wrapper;
   };
 
-  const DateInputWithLabel = ({ name, id, labelText, required }) => {
+  const DateInputWithLabel = ({
+    name,
+    id,
+    labelText,
+    detailesLabelText,
+    required,
+  }) => {
     const Wrapper = Element("div");
 
     const Label = Element("label", "dm-form__label");
@@ -172,12 +320,28 @@ const initializeContributeForm = () => {
     Input.required = required ?? false;
 
     Wrapper.appendChild(Label);
+
+    if (detailesLabelText) {
+      const DetailedLabel = Element(
+        "div",
+        "dm-contribute-form__detailed-label"
+      );
+      DetailedLabel.innerHTML = detailesLabelText;
+      Wrapper.appendChild(DetailedLabel);
+    }
+
     Wrapper.appendChild(Input);
 
     return Wrapper;
   };
 
-  const RadioInputWithLabel = ({ name, id, labelText, required }) => {
+  const RadioInputWithLabel = ({
+    name,
+    id,
+    labelText,
+    detailesLabelText,
+    required,
+  }) => {
     const Wrapper = Element("div");
 
     const Label = Element("label", "dm-form__label", "radio");
@@ -192,6 +356,16 @@ const initializeContributeForm = () => {
     RadioInput.required = required ?? false;
 
     Wrapper.appendChild(RadioInput);
+
+    if (detailesLabelText) {
+      const DetailedLabel = Element(
+        "div",
+        "dm-contribute-form__detailed-label"
+      );
+      DetailedLabel.innerHTML = detailesLabelText;
+      Wrapper.appendChild(DetailedLabel);
+    }
+
     Wrapper.appendChild(Label);
 
     return { Wrapper: Wrapper, Input: RadioInput };
@@ -201,6 +375,7 @@ const initializeContributeForm = () => {
     name,
     id,
     labelText,
+    detailesLabelText,
     required,
     radioObjectList,
   }) => {
@@ -208,6 +383,15 @@ const initializeContributeForm = () => {
     const LabelText = Element("div", "dm-form__label", "radio-title");
     LabelText.innerHTML = labelText + (required ? " *" : "");
     Wrapper.appendChild(LabelText);
+
+    if (detailesLabelText) {
+      const DetailedLabel = Element(
+        "div",
+        "dm-contribute-form__detailed-label"
+      );
+      DetailedLabel.innerHTML = detailesLabelText;
+      Wrapper.appendChild(DetailedLabel);
+    }
 
     for (const radioObject of radioObjectList) {
       const radioInputObject = RadioInputWithLabel({
@@ -223,7 +407,14 @@ const initializeContributeForm = () => {
     return Wrapper;
   };
 
-  const TextareaWithLabel = ({ name, id, labelText, rowsHight, required }) => {
+  const TextareaWithLabel = ({
+    name,
+    id,
+    labelText,
+    detailesLabelText,
+    rowsHight,
+    required,
+  }) => {
     const Wrapper = Element("div");
 
     const Label = Element("label", "dm-form__label");
@@ -237,6 +428,16 @@ const initializeContributeForm = () => {
     Textarea.required = required ?? false;
 
     Wrapper.appendChild(Label);
+
+    if (detailesLabelText) {
+      const DetailedLabel = Element(
+        "div",
+        "dm-contribute-form__detailed-label"
+      );
+      DetailedLabel.innerHTML = detailesLabelText;
+      Wrapper.appendChild(DetailedLabel);
+    }
+
     Wrapper.appendChild(Textarea);
 
     return Wrapper;
@@ -252,6 +453,7 @@ const initializeContributeForm = () => {
         name: idPre + key,
         id: idPre + key,
         labelText: songFieldObject.labelText,
+        detailesLabelText: songFieldObject.detailesLabelText,
         required: songFieldObject.required,
       };
 
@@ -499,7 +701,7 @@ const initializeContributeForm = () => {
     const formFields = {
       name: {
         labelText: "Navn",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: true,
         DOMElement: null,
@@ -507,7 +709,7 @@ const initializeContributeForm = () => {
       },
       location: {
         labelText: "By / sted",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -515,15 +717,23 @@ const initializeContributeForm = () => {
       },
       church: {
         labelText: "Kirketilhørighet / sammenheng",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
+        required: false,
+        DOMElement: null,
+        reRenderSongList: false,
+      },
+      about: {
+        labelText: "Om",
+        detailesLabelText: null,
+        inputType: TEXTAREA,
         required: false,
         DOMElement: null,
         reRenderSongList: false,
       },
       connectedArtists: {
         labelText: "Tilknyttet artist",
-        detailLabel: "For eksempel IMI-kirken og Impuls",
+        detailesLabelText: "For eksempel IMI-kirken og Impuls",
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -531,7 +741,7 @@ const initializeContributeForm = () => {
       },
       linkAppleMusic: {
         labelText: "Link til artistsiden på Apple Music",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -539,7 +749,7 @@ const initializeContributeForm = () => {
       },
       linkSpotify: {
         labelText: "Link til artistsiden på Spotify",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -547,7 +757,7 @@ const initializeContributeForm = () => {
       },
       linkYouTube: {
         labelText: "Link til YouTube",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -555,7 +765,7 @@ const initializeContributeForm = () => {
       },
       linkVimeo: {
         labelText: "Link til Vimeo",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -563,7 +773,7 @@ const initializeContributeForm = () => {
       },
       linkFacebook: {
         labelText: "Link til Facebook",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -571,7 +781,7 @@ const initializeContributeForm = () => {
       },
       linkInstagram: {
         labelText: "Link til Instagram",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -579,7 +789,7 @@ const initializeContributeForm = () => {
       },
       linkWebpage: {
         labelText: "Link til egen nettside",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -625,7 +835,7 @@ const initializeContributeForm = () => {
     const formFields = {
       title: {
         labelText: "Albumtittel",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: true,
         DOMElement: null,
@@ -633,7 +843,7 @@ const initializeContributeForm = () => {
       },
       artist: {
         labelText: "Artist(er)",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: true,
         DOMElement: null,
@@ -641,7 +851,7 @@ const initializeContributeForm = () => {
       },
       releaseDate: {
         labelText: "Utgivelsesdato",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: DATE,
         required: true,
         DOMElement: null,
@@ -649,7 +859,7 @@ const initializeContributeForm = () => {
       },
       producers: {
         labelText: "Produsent(er)",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -657,7 +867,7 @@ const initializeContributeForm = () => {
       },
       label: {
         labelText: "Ansvarlig utgiver / label / plateselskap",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -665,7 +875,7 @@ const initializeContributeForm = () => {
       },
       linkTracks: {
         labelText: "Link til tracks",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -673,7 +883,7 @@ const initializeContributeForm = () => {
       },
       linkAppleMusic: {
         labelText: "Link til albumet på Apple Music",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -681,7 +891,7 @@ const initializeContributeForm = () => {
       },
       linkSpotify: {
         labelText: "Link til albumet på Spotify",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -750,7 +960,7 @@ const initializeContributeForm = () => {
     const songFormFields = {
       title: {
         labelText: "Tittel",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: true,
         DOMElement: null,
@@ -758,7 +968,7 @@ const initializeContributeForm = () => {
       },
       songNumber: {
         labelText: "Spornummer",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: NUMBER,
         required: true,
         DOMElement: null,
@@ -766,14 +976,14 @@ const initializeContributeForm = () => {
       },
       artist: {
         labelText: "Artist(er)",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: true,
         DOMElement: null,
       },
       songType: {
         labelText: "Type sang",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: RADIO,
         required: true,
         DOMElement: null,
@@ -785,35 +995,36 @@ const initializeContributeForm = () => {
       },
       aboutSong: {
         labelText: "Om sangen",
-        detailLabel: "F.eks hvordan den ble til, tips til bruk, vitnesbyrd etc",
+        detailesLabelText:
+          "F.eks hvordan den ble til, tips til bruk, vitnesbyrd etc",
         inputType: TEXTAREA,
         required: false,
         DOMElement: null,
       },
       recommendedKeys: {
         labelText: "Anbefalte tonearter",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
       },
       scripture: {
         labelText: "Skriftsteder",
-        detailLabel: "Separer med komma - <i>Joh 3,16; Jes 6,2</i>",
+        detailesLabelText: "Separer med komma - <i>Joh 3,16; Jes 6,2</i>",
         inputType: TEXT,
         required: false,
         DOMElement: null,
       },
       writers: {
         labelText: "Låtskriver(e)",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
       },
       producers: {
         labelText: "Produsent(er)",
-        detailLabel:
+        detailesLabelText:
           "Du kan skrive rolle i parantes - <i>Ola Nordmann (produsent) Kari Nordmann (medprodusent)</i>",
         inputType: TEXT,
         required: false,
@@ -821,7 +1032,7 @@ const initializeContributeForm = () => {
       },
       contributors: {
         labelText: "Bidragsytere",
-        detailLabel:
+        detailesLabelText:
           "Du kan skrive rolle i parantes - <i>Ola Nordmann (keys og vokal) Kari Nordmann (bass)</i>",
         inputType: TEXTAREA,
         required: false,
@@ -829,14 +1040,14 @@ const initializeContributeForm = () => {
       },
       linkSpotify: {
         labelText: "Link til sangen på Spotify",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
       },
       linkAppleMusic: {
         labelText: "Link til sangen på Apple Music",
-        detailLabel: null,
+        detailesLabelText: null,
         inputType: TEXT,
         required: false,
         DOMElement: null,
@@ -963,6 +1174,7 @@ const initializeContributeForm = () => {
           index: 3,
           DOMButton: AttatchmentsTabButton,
           DOMContent: AttatchmentsTabContent,
+          hasValidState: () => true,
         },
       ],
     };
@@ -1010,9 +1222,10 @@ const initializeContributeForm = () => {
     Form.action = "/";
     Form.onsubmit = (e) => {
       e.preventDefault();
-
       console.log(state);
       console.log(albumStateToCSVString());
+      console.log(artistStateToCSVString());
+      console.log(songsStateToCSVString());
     };
 
     const Content = Tabs();
