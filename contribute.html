@@ -306,2013 +306,509 @@
                     data-name="Lovsangsangkatalogen"
                     action="/"
                   >
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file"
-                          name="file"
-                          data-name="File"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
+                    <div class="hide">
+                      <input
+                        type="text"
+                        class="w-input"
+                        maxlength="256"
+                        name="submission-id"
+                        data-name="submission-id"
+                        placeholder="submission-id"
+                        id="submission-id"
+                      /><input
+                        type="text"
+                        class="w-input"
+                        maxlength="256"
+                        name="artist-csv"
+                        data-name="artist-csv"
+                        placeholder="artist-csv"
+                        id="artist-csv"
+                      /><input
+                        type="text"
+                        class="w-input"
+                        maxlength="256"
+                        name="album-csv"
+                        data-name="album-csv"
+                        placeholder="album-csv"
+                        id="album-csv"
+                      /><input
+                        type="text"
+                        class="w-input"
+                        maxlength="256"
+                        name="songs-csv"
+                        data-name="songs-csv"
+                        placeholder="songs-csv"
+                        id="songs-csv"
+                      />
                     </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-29"
-                          name="file-29"
-                          data-name="File 29"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-29" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
+                    <div>
+                      <div><label for="Innsender-Navn" class="dm-form__label">Innsenders navn *</label><input type="text" class="dm-form__input-field w-input" maxlength="256" name="Innsender-Navn" data-name="Innsender Navn" id="Innsender-Navn" required=""></div>
+                      <div><label for="Innsender-epost" class="dm-form__label">E-post*</label><input type="email" class="dm-form__input-field w-input" maxlength="256" name="Innsender-epost" data-name="Innsender epost" id="Innsender-epost" required=""></div>
+                    </div><div><label class="dm-form__label">Artist-bilde *</label>
+                      <div class="dm-contribute-form__detailed-label">Dersom du ønsker å laste opp flere bilder, legg link til Dropbox eller lignende i kommentarfeltet nederst.</div>
+                      <div class="dm-form__upload-wrapper w-file-upload">
+                        <div class="w-file-upload-default"><input type="file" id="Artistbilde" name="Artistbilde" data-name="Artistbilde" accept=".bmp, .dng, .eps, .gif, .jpg, .jpeg, .png, .ps, .raw, .svg, .tga, .tif, .tiff" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Artistbilde" class="dm-button dm-form__upload-button w-file-upload-label">
+                            <div class="w-icon-file-upload-icon"></div>
+                            <div class="w-inline-block">Last opp</div>
+                          </label>
+                          <div class="dm-form-upload__info w-file-upload-info">Liggende, minst 1500 x 1000 px</div>
                         </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                        <div class="w-file-upload-uploading w-hidden">
+                          <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                              <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                              <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                              </path>
+                            </svg>
+                            <div class="w-inline-block">Uploading...</div>
                           </div>
                         </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-28"
-                          name="file-28"
-                          data-name="File 28"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-28" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                        <div class="w-file-upload-success w-hidden">
+                          <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                            <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div class="w-file-remove-link">
+                              <div class="w-icon-file-upload-remove"></div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
+                        <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                          <div class="w-file-upload-error-msg" data-w-size-error="Upload failed. Max size for files is 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Upload failed. Max size for files is 10 MB.</div>
                         </div>
                       </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-27"
-                          name="file-27"
-                          data-name="File 27"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-27" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
+                    </div><div><label class="dm-form__label">Albumcover *</label>
+                      <div class="dm-form__upload-wrapper w-file-upload">
+                        <div class="w-file-upload-default"><input type="file" id="Albumcover" name="Albumcover" data-name="Albumcover" accept=".bmp, .dng, .eps, .gif, .jpg, .jpeg, .png, .ps, .raw, .svg, .tga, .tif, .tiff" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Albumcover" class="dm-button dm-form__upload-button w-file-upload-label">
+                            <div class="w-icon-file-upload-icon"></div>
+                            <div class="w-inline-block">Last opp</div>
+                          </label>
+                          <div class="dm-form-upload__info w-file-upload-info">Minst 300 x 300 px</div>
                         </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                        <div class="w-file-upload-uploading w-hidden">
+                          <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                              <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                              <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                              </path>
+                            </svg>
+                            <div class="w-inline-block">Uploading...</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                        </div>
+                        <div class="w-file-upload-success w-hidden">
+                          <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                            <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div class="w-file-remove-link">
+                              <div class="w-icon-file-upload-remove"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                          <div class="w-file-upload-error-msg" data-w-size-error="Upload failed. Max size for files is 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Upload failed. Max size for files is 10 MB.</div>
+                        </div>
+                      </div>
+                    </div><div><label class="dm-form__label">Digital booklet</label>
+                      <div class="dm-form__upload-wrapper w-file-upload">
+                        <div class="w-file-upload-default"><input type="file" id="Album-booklet" name="Album-booklet" data-name="Album booklet" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Album-booklet" class="dm-button dm-form__upload-button w-file-upload-label">
+                            <div class="w-icon-file-upload-icon"></div>
+                            <div class="w-inline-block">Last opp</div>
+                          </label>
+                          <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                        </div>
+                        <div class="w-file-upload-uploading w-hidden">
+                          <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                              <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                              <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                              </path>
+                            </svg>
+                            <div class="w-inline-block">Uploading...</div>
+                          </div>
+                        </div>
+                        <div class="w-file-upload-success w-hidden">
+                          <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                            <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div class="w-file-remove-link">
+                              <div class="w-icon-file-upload-remove"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                          <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                        </div>
+                      </div>
+                    </div><div>
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 1</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-8" name="Original-Blekke-1" data-name="Original Blekke 1" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-8" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                          </div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-26"
-                          name="file-26"
-                          data-name="File 26"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-26" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 2</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-9" name="Original-Blekke-2" data-name="Original Blekke 2" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-9" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-25"
-                          name="file-25"
-                          data-name="File 25"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-25" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 3</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-10" name="Original-Blekke-3" data-name="Original Blekke 3" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-10" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-24"
-                          name="file-24"
-                          data-name="File 24"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-24" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 4</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-11" name="Original-Blekke-4" data-name="Original Blekke 4" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-11" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-23"
-                          name="file-23"
-                          data-name="File 23"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-23" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 5</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-12" name="Original-Blekke-5" data-name="Original Blekke 5" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-12" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-22"
-                          name="file-22"
-                          data-name="File 22"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-22" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 6</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-13" name="Original-Blekke-6" data-name="Original Blekke 6" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-13" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-21"
-                          name="file-21"
-                          data-name="File 21"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-21" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 7</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-14" name="Original-Blekke-7" data-name="Original Blekke 7" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-14" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-20"
-                          name="file-20"
-                          data-name="File 20"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-20" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 8</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-15" name="Original-Blekke-8" data-name="Original Blekke 8" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-15" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-19"
-                          name="file-19"
-                          data-name="File 19"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-19" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 9</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-17" name="Original-Blekke-9" data-name="Original Blekke 9" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-17" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-18"
-                          name="file-18"
-                          data-name="File 18"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-18" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 10</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-18" name="Original-Blekke-10" data-name="Original Blekke 10" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-18" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-17"
-                          name="file-17"
-                          data-name="File 17"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-17" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 11</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-19" name="Original-Blekke-11" data-name="Original Blekke 11" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-19" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-16"
-                          name="file-16"
-                          data-name="File 16"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-16" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
+                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 12</label>
+                        <div class="dm-form__upload-wrapper w-file-upload">
+                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-20" name="Original-Blekke-12" data-name="Original Blekke 12" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-20" class="dm-button dm-form__upload-button w-file-upload-label">
+                              <div class="w-icon-file-upload-icon"></div>
+                              <div class="w-inline-block">Last opp</div>
+                            </label>
+                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
                           </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
+                          <div class="w-file-upload-uploading w-hidden">
+                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
+                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
+                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                                </path>
+                              </svg>
+                              <div class="w-inline-block">Uploading...</div>
+                            </div>
+                          </div>
+                          <div class="w-file-upload-success w-hidden">
+                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
+                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                              <div class="w-file-remove-link">
+                                <div class="w-icon-file-upload-remove"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
+                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
                           </div>
                         </div>
                       </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-15"
-                          name="file-15"
-                          data-name="File 15"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-15" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-14"
-                          name="file-14"
-                          data-name="File 14"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-14" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-13"
-                          name="file-13"
-                          data-name="File 13"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-13" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-12"
-                          name="file-12"
-                          data-name="File 12"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-12" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-11"
-                          name="file-11"
-                          data-name="File 11"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-11" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-10"
-                          name="file-10"
-                          data-name="File 10"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-10" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-9"
-                          name="file-9"
-                          data-name="File 9"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-9" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-8"
-                          name="file-8"
-                          data-name="File 8"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-8" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-7"
-                          name="file-7"
-                          data-name="File 7"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-7" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-6"
-                          name="file-6"
-                          data-name="File 6"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-6" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-5"
-                          name="file-5"
-                          data-name="File 5"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-5" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-4"
-                          name="file-4"
-                          data-name="File 4"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-4" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-3"
-                          name="file-3"
-                          data-name="File 3"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-3" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w-file-upload">
-                      <div class="w-file-upload-default">
-                        <input
-                          type="file"
-                          id="file-2"
-                          name="file-2"
-                          data-name="File 2"
-                          class="w-file-upload-input"
-                          style="height: 39px; width: 1px"
-                        /><label for="file-2" class="w-file-upload-label">
-                          <div class="w-icon-file-upload-icon"></div>
-                          <div class="w-inline-block">Upload File</div>
-                        </label>
-                        <div class="w-file-upload-info">
-                          Max file size 10MB.
-                        </div>
-                      </div>
-                      <div class="w-file-upload-uploading w-hidden">
-                        <div class="w-file-upload-uploading-btn">
-                          <svg
-                            class="w-icon-file-upload-uploading"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 30 30"
-                          >
-                            <path
-                              fill="currentColor"
-                              opacity=".2"
-                              d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
-                            ></path>
-                            <path
-                              fill="currentColor"
-                              opacity=".75"
-                              d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                attributeType="XML"
-                                dur="0.6s"
-                                from="0 15 15"
-                                repeatCount="indefinite"
-                                to="360 15 15"
-                                type="rotate"
-                              ></animateTransform>
-                            </path>
-                          </svg>
-                          <div class="w-inline-block">Uploading...</div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-success w-hidden">
-                        <div class="w-file-upload-file">
-                          <div class="w-file-upload-file-name">
-                            fileuploaded.jpg
-                          </div>
-                          <div class="w-file-remove-link">
-                            <div class="w-icon-file-upload-remove"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="w-file-upload-error w-hidden">
-                        <div
-                          class="w-file-upload-error-msg"
-                          data-w-size-error="Upload failed. Max size for files is 10 MB."
-                          data-w-type-error="Upload failed. Invalid file type."
-                          data-w-generic-error="Upload failed. Something went wrong. Please retry."
-                        >
-                          Upload failed. Max size for files is 10 MB.
-                        </div>
-                      </div>
-                    </div>
-                    <input
-                      type="submit"
-                      value="Submit"
-                      data-wait="Please wait..."
-                      class="w-button"
-                    /><label for="name">Name</label>
+                    </div><div><label for="Kommentar" class="dm-form__label">Kommentar</label><textarea data-name="Kommentar" maxlength="5000" id="Kommentar" name="Kommentar" placeholder="Gi oss en lyd dersom det er noe vi bør vite. " class="dm-form__input-field w-input"></textarea></div>
                   </form>
                   <div class="w-form-done">
                     <div>Thank you! Your submission has been received!</div>

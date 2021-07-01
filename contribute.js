@@ -109,14 +109,14 @@ const initializeContributeForm = () => {
     row.push(a.church); // "Tilhørighet," +
     row.push(a.linkWebpage); // "Egen nettside med ressurser," +
     row.push(a.about); // "Eventuel beskrivelse av artist," +
-    row.push(a.linkFacebook); // "Facebook," +
-    row.push(a.linkInstagram); // "Instagram," +
-    row.push(a.linkAppleMusic); // "iTunes / Apple Music," +
-    row.push(a.linkYouTube); // "YouTube," +
-    row.push(a.linkVimeo); // "Vimeo," +
-    row.push(a.linkSpotify); // "Spotify," +
-    row.push(a.connectedArtists); // "Tilknyttet artist," +
-    row.push(a.location); // "Sted,"
+    row.push(removeHash(a.linkFacebook)); // "Facebook," +
+    row.push(removeHash(a.linkInstagram)); // "Instagram," +
+    row.push(removeHash(a.linkAppleMusic)); // "iTunes / Apple Music," +
+    row.push(removeHash(a.linkYouTube)); // "YouTube," +
+    row.push(removeHash(a.linkVimeo)); // "Vimeo," +
+    row.push(removeHash(a.linkSpotify)); // "Spotify," +
+    row.push(removeHash(a.connectedArtists)); // "Tilknyttet artist," +
+    row.push(removeHash(a.location)); // "Sted,"
 
     return headings + "\n" + row.join(",");
   };
@@ -199,9 +199,9 @@ const initializeContributeForm = () => {
       row.push(s.writers); // "Låtskrivere," +
       row.push(s.producers); // "Produsenter," +
       row.push(s.contributors); // "Bidragsytere (tekst)," +
-      row.push(s.linkSpotify); // "Link: Spotify," +
-      row.push(s.linkSpotify); // "Link: Spotify II," +
-      row.push(s.linkAppleMusic); // "iTunes / Apple Music," +
+      row.push(removeHash(s.linkSpotify)); // "Link: Spotify," +
+      row.push(removeHash(s.linkSpotify)); // "Link: Spotify II," +
+      row.push(removeHash(s.linkAppleMusic)); // "iTunes / Apple Music," +
       row.push(""); // "Original toneart," + // TODO
       row.push(""); // "Tempo," + // TODO
       row.push(""); // "Taktart," + // TODO
@@ -211,18 +211,28 @@ const initializeContributeForm = () => {
       rows.push(row.join(","));
     });
 
-    /* row.push(a.title + " - " + a.artist); // "Albumtittel - Artist," +
-    row.push((a.title + " " + a.artist).toLowerCase().replace(/ +/g, "-")); // "Slug," +
-    row.push(a.title); // "Albumtittel," +
-    row.push(a.artist); // "Artist(er) - tekst," +
-    row.push(a.releaseDate); // "Utgivelsesdato," +
-    row.push(a.producers); // "Produsent(er)," +
-    row.push(a.label); // "Ansvarlig utgiver," +
-    row.push(removeHash(a.linkTracks)); // "Tracks," +
-    row.push(removeHash(a.linkAppleMusic)); // "Link til album på iTunes," +
-    row.push(removeHash(a.linkSpotify)); // "Spotify"; */
-
     return headings + "\n" + rows.join(",");
+  };
+
+  const setWebflowFormValues = () => {
+    console.log("hello");
+    console.log(albumStateToCSVString());
+    const SubmissionId = document.getElementById("submission-id");
+    const ArtistCsv = document.getElementById("artist-csv");
+    const AlbumCsv = document.getElementById("album-csv");
+    const SongsCsv = document.getElementById("songs-csv");
+
+    if (!SubmissionId || !ArtistCsv || !AlbumCsv || !SongsCsv)
+      alert(
+        "Det skjedde en feil under innsendingen. Ta kontakt med sanger@lovsang.no."
+      );
+
+    SubmissionId.value =
+      Date.now().valueOf() + state.album.title.replace(/ +/g, "-");
+
+    ArtistCsv.value = artistStateToCSVString();
+    AlbumCsv.value = albumStateToCSVString();
+    SongsCsv.value = songsStateToCSVString();
   };
 
   const Element = (elementType, ...classes) => {
@@ -557,7 +567,7 @@ const initializeContributeForm = () => {
       validState: false,
       title: "Ny sang",
       songNumber: state.songs.length
-        ? state.songs[state.songs.length - 1].songNumber + 1
+        ? parseInt(state.songs[state.songs.length - 1].songNumber || "0") + 1
         : 1,
       artist: "",
       songType: "",
@@ -945,6 +955,8 @@ const initializeContributeForm = () => {
 
       SongListElementRenderWrapper.innerHTML = "";
 
+      state.songs.sort((a, b) => a.songNumber - b.songNumber);
+
       SongListElementRenderWrapper.appendChild(SongList(renderCallback));
 
       if (tabRenderCallback) tabRenderCallback();
@@ -1092,6 +1104,7 @@ const initializeContributeForm = () => {
 
     const AttatchmentsTabButton = Element("a", "dm-button");
     AttatchmentsTabButton.innerHTML = "Steg 4 - Vedlegg";
+    AttatchmentsTabButton.addEventListener("click", setWebflowFormValues);
     TabButtonsWrapper.appendChild(AttatchmentsTabButton);
 
     const RightButtonWraper = Element(
@@ -1202,10 +1215,10 @@ const initializeContributeForm = () => {
     };
 
     tabState.tabs.forEach((tabObject) => {
-      tabObject.DOMButton.onclick = () => {
+      tabObject.DOMButton.addEventListener("click", () => {
         tabState.currentTabIndex = tabObject.index;
         renderState();
-      };
+      });
 
       if (tabObject.setCallback) tabObject.setCallback(renderState);
     });
