@@ -235,6 +235,20 @@ const initializeContributeForm = () => {
     SongsCsv.value = songsStateToCSVString();
   };
 
+  const updateOriginalChartCount = () => {
+    const elements = document.querySelectorAll(
+      ".js-contribute-form-original-chart"
+    );
+
+    elements.forEach((e, index) => {
+      if (index > state.songs.length - 1) {
+        e.classList.add("hide");
+      } else {
+        e.classList.remove("hide");
+      }
+    });
+  };
+
   const Element = (elementType, ...classes) => {
     const DOMElement = document.createElement(elementType);
     for (const c of classes) DOMElement.classList.add(c);
@@ -571,6 +585,7 @@ const initializeContributeForm = () => {
         : 1,
       artist: "",
       songType: "",
+      themes: "",
       aboutSong: "",
       recommendedKeys: "",
       scripture: "",
@@ -647,14 +662,14 @@ const initializeContributeForm = () => {
     SongListWrapper.appendChild(ButtonWrapper);
 
     const NewSongButton = Element("a", "dm-button");
-    NewSongButton.innerHTML = "Ny sang";
+    NewSongButton.innerHTML = "+ legg til sang";
     NewSongButton.onclick = () => {
       newSong(renderCallback);
     };
     ButtonWrapper.appendChild(NewSongButton);
 
     const DeleteSongButton = Element("a", "dm-button");
-    DeleteSongButton.innerHTML = "Slett sang";
+    DeleteSongButton.innerHTML = "- slett sang";
     DeleteSongButton.onclick = () => {
       deleteSong(renderCallback);
     };
@@ -1005,6 +1020,18 @@ const initializeContributeForm = () => {
           { value: "FungerereSomBegge", labelText: "Fungerer som begge" },
         ],
       },
+      themes: {
+        labelText: "Type sang",
+        detailesLabelText: null,
+        inputType: RADIO,
+        required: true,
+        DOMElement: null,
+        radioObjectList: [
+          { value: "Lovsang", labelText: "Lovsang" },
+          { value: "Formidlingssang", labelText: "Formidlingssang" },
+          { value: "FungerereSomBegge", labelText: "Fungerer som begge" },
+        ],
+      },
       aboutSong: {
         labelText: "Om sangen",
         detailesLabelText:
@@ -1082,6 +1109,34 @@ const initializeContributeForm = () => {
     };
   };
 
+  const ChartsTab = () => {
+    let tabRenderCallback = undefined;
+
+    const setTabRenderCallback = (callback) => (tabRenderCallback = callback);
+
+    const TabWrapper = Element("div");
+
+    /* Rerender start */
+    const SongListElementRenderWrapper = Element("div");
+
+    const renderCallback = () => {
+      if (tabRenderCallback) tabRenderCallback();
+    };
+
+    /* Rerender end */
+
+    TabWrapper.innerHTML +=
+      'Blekkegenerator kommer ila fredag. Samme som tidligere (<a href="https://lovsang.netlify.app" style="text-decoration:underline;">https://lovsang.netlify.app</a>), bare som en integrert del av løsningen.';
+
+    renderCallback();
+
+    return {
+      TabWrapper: TabWrapper,
+      hasValidState: true,
+      setTabRenderCallback,
+    };
+  };
+
   const Tabs = () => {
     const TabsWrapper = Element("div");
     const TabButtonsWrapper = Element(
@@ -1090,40 +1145,76 @@ const initializeContributeForm = () => {
     );
     TabsWrapper.appendChild(TabButtonsWrapper);
 
+    const ArtistTabButtonWrapper = Element(
+      "div",
+      "dm-contribute-form__tab-button-wrapper"
+    );
+    ArtistTabButtonWrapper.innerHTML = "Steg 1";
     const ArtistTabButton = Element("a", "dm-button");
-    ArtistTabButton.innerHTML = "Steg 1 - Artist";
-    TabButtonsWrapper.appendChild(ArtistTabButton);
+    ArtistTabButton.innerHTML = "Artist";
+    ArtistTabButtonWrapper.appendChild(ArtistTabButton);
+    TabButtonsWrapper.appendChild(ArtistTabButtonWrapper);
 
+    const AlbumTabButtonWrapper = Element(
+      "div",
+      "dm-contribute-form__tab-button-wrapper"
+    );
+    AlbumTabButtonWrapper.innerHTML = "Steg 2";
     const AlbumTabButton = Element("a", "dm-button");
-    AlbumTabButton.innerHTML = "Steg 2 - Album";
-    TabButtonsWrapper.appendChild(AlbumTabButton);
+    AlbumTabButton.innerHTML = "Album";
+    AlbumTabButtonWrapper.appendChild(AlbumTabButton);
+    TabButtonsWrapper.appendChild(AlbumTabButtonWrapper);
 
+    const SongsTabButtonWrapper = Element(
+      "div",
+      "dm-contribute-form__tab-button-wrapper"
+    );
+    SongsTabButtonWrapper.innerHTML = "Steg 3";
     const SongsTabButton = Element("a", "dm-button");
-    SongsTabButton.innerHTML = "Steg 3 - Sanger";
-    TabButtonsWrapper.appendChild(SongsTabButton);
+    SongsTabButton.innerHTML = "Sanger";
+    SongsTabButtonWrapper.appendChild(SongsTabButton);
+    TabButtonsWrapper.appendChild(SongsTabButtonWrapper);
 
+    const ChartsTabButtonWrapper = Element(
+      "div",
+      "dm-contribute-form__tab-button-wrapper"
+    );
+    ChartsTabButtonWrapper.innerHTML = "Steg 4";
+    const ChartTabButton = Element("a", "dm-button");
+    ChartTabButton.innerHTML = "Blekker";
+    ChartsTabButtonWrapper.appendChild(ChartTabButton);
+    TabButtonsWrapper.appendChild(ChartsTabButtonWrapper);
+
+    const AttatchmentsTabButtonWrapper = Element(
+      "div",
+      "dm-contribute-form__tab-button-wrapper"
+    );
+    AttatchmentsTabButtonWrapper.innerHTML = "Steg 5";
     const AttatchmentsTabButton = Element("a", "dm-button");
-    AttatchmentsTabButton.innerHTML = "Steg 4 - Vedlegg";
-    AttatchmentsTabButton.addEventListener("click", setWebflowFormValues);
-    TabButtonsWrapper.appendChild(AttatchmentsTabButton);
+    AttatchmentsTabButton.innerHTML = "Vedlegg og fullfør";
+    AttatchmentsTabButton.addEventListener("click", () => {
+      setWebflowFormValues();
+      updateOriginalChartCount();
+    });
+    AttatchmentsTabButtonWrapper.appendChild(AttatchmentsTabButton);
+    TabButtonsWrapper.appendChild(AttatchmentsTabButtonWrapper);
 
     const RightButtonWraper = Element(
       "div",
-      "dm-contribute-form__tab-buttons-wrapper"
+      "dm-contribute-form__tab-buttons-wrapper",
+      "dm-contribute-form__tab-button-wrapper"
     );
+
     RightButtonWraper.style.marginLeft = "auto";
     TabButtonsWrapper.appendChild(RightButtonWraper);
 
-    const SubmitButton = `<input type="submit" value="Neste steg" class="dm-button" style="background-color:green">`;
-    RightButtonWraper.innerHTML += SubmitButton;
-
     const ClearAllDataButton = Element("a", "dm-button");
     RightButtonWraper.appendChild(ClearAllDataButton);
-    ClearAllDataButton.innerHTML = "Slett alle data";
+    ClearAllDataButton.innerHTML = "Nullstill skjema";
     ClearAllDataButton.onclick = () => {
       if (
         confirm(
-          "Er du sikker på at du vil slette alle dataene i dette skjemaet. Dette kan ikke angres."
+          "Er du sikker på at du vil nullstille og slette alle dataene i dette skjemaet. Dette kan ikke angres."
         )
       ) {
         clearState();
@@ -1145,10 +1236,13 @@ const initializeContributeForm = () => {
     TabContentWrapper.appendChild(albumTabContent.TabWrapper);
     const songsTabContent = SongsTab();
     TabContentWrapper.appendChild(songsTabContent.TabWrapper);
+    const chartsTabContent = ChartsTab();
+    TabContentWrapper.appendChild(chartsTabContent.TabWrapper);
     const AttatchmentsTabContent = document.getElementById(
       "js-contribute-form-attatchments-tab"
     );
     AttatchmentsTabContent.parentNode = TabContentWrapper;
+    AttatchmentsTabContent.classList.remove("hide");
 
     const tabState = {
       currentTabIndex: 0,
@@ -1185,6 +1279,12 @@ const initializeContributeForm = () => {
         },
         {
           index: 3,
+          DOMButton: ChartTabButton,
+          DOMContent: chartsTabContent.TabWrapper,
+          hasValidState: () => true,
+        },
+        {
+          index: 4,
           DOMButton: AttatchmentsTabButton,
           DOMContent: AttatchmentsTabContent,
           hasValidState: () => true,
@@ -1233,13 +1333,6 @@ const initializeContributeForm = () => {
     Form.id = "contribution-form-helper";
     Form.name = "contribution-form-helper";
     Form.action = "/";
-    Form.onsubmit = (e) => {
-      e.preventDefault();
-      console.log(state);
-      console.log(albumStateToCSVString());
-      console.log(artistStateToCSVString());
-      console.log(songsStateToCSVString());
-    };
 
     const Content = Tabs();
 
