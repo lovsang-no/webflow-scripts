@@ -117,3 +117,18 @@
   margin-top: -0.2em;
   margin-bottom: 0.4em;
 }
+
+.dm-contribute-chart__columns-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+textarea {
+  overflow: auto;
+}
+
+.dm-contribute-form-song-list__vairant-list {
+  display: grid;
+  grid-template-columns: repeat(1fr, 3);
+}

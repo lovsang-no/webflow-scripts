@@ -342,473 +342,1614 @@
                       />
                     </div>
                     <div>
-                      <div><label for="Innsender-Navn" class="dm-form__label">Innsenders navn *</label><input type="text" class="dm-form__input-field w-input" maxlength="256" name="Innsender-Navn" data-name="Innsender Navn" id="Innsender-Navn" required=""></div>
-                      <div><label for="Innsender-epost" class="dm-form__label">E-post*</label><input type="email" class="dm-form__input-field w-input" maxlength="256" name="Innsender-epost" data-name="Innsender epost" id="Innsender-epost" required=""></div>
-                    </div><div><label class="dm-form__label">Artist-bilde *</label>
-                      <div class="dm-contribute-form__detailed-label">Dersom du ønsker å laste opp flere bilder, legg link til Dropbox eller lignende i kommentarfeltet nederst.</div>
+                      <div>
+                        <label for="Innsender-Navn" class="dm-form__label"
+                          >Innsenders navn *</label
+                        ><input
+                          type="text"
+                          class="dm-form__input-field w-input"
+                          maxlength="256"
+                          name="Innsender-Navn"
+                          data-name="Innsender Navn"
+                          id="Innsender-Navn"
+                          required=""
+                        />
+                      </div>
+                      <div>
+                        <label for="Innsender-epost" class="dm-form__label"
+                          >E-post*</label
+                        ><input
+                          type="email"
+                          class="dm-form__input-field w-input"
+                          maxlength="256"
+                          name="Innsender-epost"
+                          data-name="Innsender epost"
+                          id="Innsender-epost"
+                          required=""
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label class="dm-form__label">Artist-bilde *</label>
+                      <div class="dm-contribute-form__detailed-label">
+                        Dersom du ønsker å laste opp flere bilder, legg link til
+                        Dropbox eller lignende i kommentarfeltet nederst.
+                      </div>
                       <div class="dm-form__upload-wrapper w-file-upload">
-                        <div class="w-file-upload-default"><input type="file" id="Artistbilde" name="Artistbilde" data-name="Artistbilde" accept=".bmp, .dng, .eps, .gif, .jpg, .jpeg, .png, .ps, .raw, .svg, .tga, .tif, .tiff" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Artistbilde" class="dm-button dm-form__upload-button w-file-upload-label">
+                        <div class="w-file-upload-default">
+                          <input
+                            type="file"
+                            id="Artistbilde"
+                            name="Artistbilde"
+                            data-name="Artistbilde"
+                            accept=".bmp, .dng, .eps, .gif, .jpg, .jpeg, .png, .ps, .raw, .svg, .tga, .tif, .tiff"
+                            class="w-file-upload-input"
+                            style="height: 0px; width: 1px"
+                          /><label
+                            for="Artistbilde"
+                            class="
+                              dm-button
+                              dm-form__upload-button
+                              w-file-upload-label
+                            "
+                          >
                             <div class="w-icon-file-upload-icon"></div>
                             <div class="w-inline-block">Last opp</div>
                           </label>
-                          <div class="dm-form-upload__info w-file-upload-info">Liggende, minst 1500 x 1000 px</div>
+                          <div class="dm-form-upload__info w-file-upload-info">
+                            Liggende, minst 1500 x 1000 px
+                          </div>
                         </div>
                         <div class="w-file-upload-uploading w-hidden">
-                          <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                              <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                              <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                          <div
+                            class="
+                              dm-button
+                              dm-form__upload-button
+                              w-file-upload-uploading-btn
+                            "
+                          >
+                            <svg
+                              class="
+                                dm-form-upload-button__icon
+                                w-icon-file-upload-uploading
+                              "
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 30 30"
+                            >
+                              <path
+                                fill="currentColor"
+                                opacity=".2"
+                                d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                              ></path>
+                              <path
+                                fill="currentColor"
+                                opacity=".75"
+                                d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                              >
+                                <animateTransform
+                                  attributeName="transform"
+                                  attributeType="XML"
+                                  dur="0.6s"
+                                  from="0 15 15"
+                                  repeatCount="indefinite"
+                                  to="360 15 15"
+                                  type="rotate"
+                                ></animateTransform>
                               </path>
                             </svg>
                             <div class="w-inline-block">Uploading...</div>
                           </div>
                         </div>
                         <div class="w-file-upload-success w-hidden">
-                          <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                            <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                          <div
+                            class="
+                              dm-button
+                              dm-form__upload-button
+                              success-state
+                              w-file-upload-file
+                            "
+                          >
+                            <div class="w-file-upload-file-name">
+                              fileuploaded.jpg
+                            </div>
                             <div class="w-file-remove-link">
                               <div class="w-icon-file-upload-remove"></div>
                             </div>
                           </div>
                         </div>
-                        <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                          <div class="w-file-upload-error-msg" data-w-size-error="Upload failed. Max size for files is 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Upload failed. Max size for files is 10 MB.</div>
+                        <div
+                          class="
+                            dm-form-upload__error-state-wrapper
+                            w-file-upload-error w-hidden
+                          "
+                        >
+                          <div
+                            class="w-file-upload-error-msg"
+                            data-w-size-error="Upload failed. Max size for files is 10 MB."
+                            data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                            data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                          >
+                            Upload failed. Max size for files is 10 MB.
+                          </div>
                         </div>
                       </div>
-                    </div><div><label class="dm-form__label">Albumcover *</label>
+                    </div>
+                    <div>
+                      <label class="dm-form__label">Albumcover *</label>
                       <div class="dm-form__upload-wrapper w-file-upload">
-                        <div class="w-file-upload-default"><input type="file" id="Albumcover" name="Albumcover" data-name="Albumcover" accept=".bmp, .dng, .eps, .gif, .jpg, .jpeg, .png, .ps, .raw, .svg, .tga, .tif, .tiff" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Albumcover" class="dm-button dm-form__upload-button w-file-upload-label">
+                        <div class="w-file-upload-default">
+                          <input
+                            type="file"
+                            id="Albumcover"
+                            name="Albumcover"
+                            data-name="Albumcover"
+                            accept=".bmp, .dng, .eps, .gif, .jpg, .jpeg, .png, .ps, .raw, .svg, .tga, .tif, .tiff"
+                            class="w-file-upload-input"
+                            style="height: 0px; width: 1px"
+                          /><label
+                            for="Albumcover"
+                            class="
+                              dm-button
+                              dm-form__upload-button
+                              w-file-upload-label
+                            "
+                          >
                             <div class="w-icon-file-upload-icon"></div>
                             <div class="w-inline-block">Last opp</div>
                           </label>
-                          <div class="dm-form-upload__info w-file-upload-info">Minst 300 x 300 px</div>
+                          <div class="dm-form-upload__info w-file-upload-info">
+                            Minst 300 x 300 px
+                          </div>
                         </div>
                         <div class="w-file-upload-uploading w-hidden">
-                          <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                              <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                              <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                          <div
+                            class="
+                              dm-button
+                              dm-form__upload-button
+                              w-file-upload-uploading-btn
+                            "
+                          >
+                            <svg
+                              class="
+                                dm-form-upload-button__icon
+                                w-icon-file-upload-uploading
+                              "
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 30 30"
+                            >
+                              <path
+                                fill="currentColor"
+                                opacity=".2"
+                                d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                              ></path>
+                              <path
+                                fill="currentColor"
+                                opacity=".75"
+                                d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                              >
+                                <animateTransform
+                                  attributeName="transform"
+                                  attributeType="XML"
+                                  dur="0.6s"
+                                  from="0 15 15"
+                                  repeatCount="indefinite"
+                                  to="360 15 15"
+                                  type="rotate"
+                                ></animateTransform>
                               </path>
                             </svg>
                             <div class="w-inline-block">Uploading...</div>
                           </div>
                         </div>
                         <div class="w-file-upload-success w-hidden">
-                          <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                            <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                          <div
+                            class="
+                              dm-button
+                              dm-form__upload-button
+                              success-state
+                              w-file-upload-file
+                            "
+                          >
+                            <div class="w-file-upload-file-name">
+                              fileuploaded.jpg
+                            </div>
                             <div class="w-file-remove-link">
                               <div class="w-icon-file-upload-remove"></div>
                             </div>
                           </div>
                         </div>
-                        <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                          <div class="w-file-upload-error-msg" data-w-size-error="Upload failed. Max size for files is 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Upload failed. Max size for files is 10 MB.</div>
+                        <div
+                          class="
+                            dm-form-upload__error-state-wrapper
+                            w-file-upload-error w-hidden
+                          "
+                        >
+                          <div
+                            class="w-file-upload-error-msg"
+                            data-w-size-error="Upload failed. Max size for files is 10 MB."
+                            data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                            data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                          >
+                            Upload failed. Max size for files is 10 MB.
+                          </div>
                         </div>
                       </div>
-                    </div><div><label class="dm-form__label">Digital booklet</label>
+                    </div>
+                    <div>
+                      <label class="dm-form__label">Digital booklet</label>
                       <div class="dm-form__upload-wrapper w-file-upload">
-                        <div class="w-file-upload-default"><input type="file" id="Album-booklet" name="Album-booklet" data-name="Album booklet" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Album-booklet" class="dm-button dm-form__upload-button w-file-upload-label">
+                        <div class="w-file-upload-default">
+                          <input
+                            type="file"
+                            id="Album-booklet"
+                            name="Album-booklet"
+                            data-name="Album booklet"
+                            accept=".pdf"
+                            class="w-file-upload-input"
+                            style="height: 0px; width: 1px"
+                          /><label
+                            for="Album-booklet"
+                            class="
+                              dm-button
+                              dm-form__upload-button
+                              w-file-upload-label
+                            "
+                          >
                             <div class="w-icon-file-upload-icon"></div>
                             <div class="w-inline-block">Last opp</div>
                           </label>
-                          <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                          <div class="dm-form-upload__info w-file-upload-info">
+                            PDF, max 10 MB
+                          </div>
                         </div>
                         <div class="w-file-upload-uploading w-hidden">
-                          <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                              <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                              <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                          <div
+                            class="
+                              dm-button
+                              dm-form__upload-button
+                              w-file-upload-uploading-btn
+                            "
+                          >
+                            <svg
+                              class="
+                                dm-form-upload-button__icon
+                                w-icon-file-upload-uploading
+                              "
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 30 30"
+                            >
+                              <path
+                                fill="currentColor"
+                                opacity=".2"
+                                d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                              ></path>
+                              <path
+                                fill="currentColor"
+                                opacity=".75"
+                                d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                              >
+                                <animateTransform
+                                  attributeName="transform"
+                                  attributeType="XML"
+                                  dur="0.6s"
+                                  from="0 15 15"
+                                  repeatCount="indefinite"
+                                  to="360 15 15"
+                                  type="rotate"
+                                ></animateTransform>
                               </path>
                             </svg>
                             <div class="w-inline-block">Uploading...</div>
                           </div>
                         </div>
                         <div class="w-file-upload-success w-hidden">
-                          <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                            <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                          <div
+                            class="
+                              dm-button
+                              dm-form__upload-button
+                              success-state
+                              w-file-upload-file
+                            "
+                          >
+                            <div class="w-file-upload-file-name">
+                              fileuploaded.jpg
+                            </div>
                             <div class="w-file-remove-link">
                               <div class="w-icon-file-upload-remove"></div>
                             </div>
                           </div>
                         </div>
-                        <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                          <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                        <div
+                          class="
+                            dm-form-upload__error-state-wrapper
+                            w-file-upload-error w-hidden
+                          "
+                        >
+                          <div
+                            class="w-file-upload-error-msg"
+                            data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                            data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                            data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                          >
+                            Opplasting feilet. Fil større enn 10 MB.
+                          </div>
                         </div>
                       </div>
-                    </div><div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 1</label>
+                    </div>
+                    <div>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 1</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-8" name="Original-Blekke-1" data-name="Original Blekke 1" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-8" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-8"
+                              name="Original-Blekke-1"
+                              data-name="Original Blekke 1"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-8"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 2</label>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 2</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-9" name="Original-Blekke-2" data-name="Original Blekke 2" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-9" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-9"
+                              name="Original-Blekke-2"
+                              data-name="Original Blekke 2"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-9"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 3</label>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 3</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-10" name="Original-Blekke-3" data-name="Original Blekke 3" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-10" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-10"
+                              name="Original-Blekke-3"
+                              data-name="Original Blekke 3"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-10"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 4</label>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 4</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-11" name="Original-Blekke-4" data-name="Original Blekke 4" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-11" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-11"
+                              name="Original-Blekke-4"
+                              data-name="Original Blekke 4"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-11"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 5</label>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 5</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-12" name="Original-Blekke-5" data-name="Original Blekke 5" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-12" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-12"
+                              name="Original-Blekke-5"
+                              data-name="Original Blekke 5"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-12"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 6</label>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 6</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-13" name="Original-Blekke-6" data-name="Original Blekke 6" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-13" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-13"
+                              name="Original-Blekke-6"
+                              data-name="Original Blekke 6"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-13"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 7</label>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 7</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-14" name="Original-Blekke-7" data-name="Original Blekke 7" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-14" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-14"
+                              name="Original-Blekke-7"
+                              data-name="Original Blekke 7"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-14"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 8</label>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 8</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-15" name="Original-Blekke-8" data-name="Original Blekke 8" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-15" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-15"
+                              name="Original-Blekke-8"
+                              data-name="Original Blekke 8"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-15"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 9</label>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 9</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-17" name="Original-Blekke-9" data-name="Original Blekke 9" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-17" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-17"
+                              name="Original-Blekke-9"
+                              data-name="Original Blekke 9"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-17"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 10</label>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 10</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-18" name="Original-Blekke-10" data-name="Original Blekke 10" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-18" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-18"
+                              name="Original-Blekke-10"
+                              data-name="Original Blekke 10"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-18"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 11</label>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 11</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-19" name="Original-Blekke-11" data-name="Original Blekke 11" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-19" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-19"
+                              name="Original-Blekke-11"
+                              data-name="Original Blekke 11"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-19"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="js-contribute-form-original-chart"><label class="dm-form__label">Original PDF-blekke 12</label>
+                      <div class="js-contribute-form-original-chart">
+                        <label class="dm-form__label"
+                          >Original PDF-blekke 12</label
+                        >
                         <div class="dm-form__upload-wrapper w-file-upload">
-                          <div class="w-file-upload-default"><input type="file" id="Original-Blekke-20" name="Original-Blekke-12" data-name="Original Blekke 12" accept=".pdf" class="w-file-upload-input" style="height: 0px; width: 1px;"><label for="Original-Blekke-20" class="dm-button dm-form__upload-button w-file-upload-label">
+                          <div class="w-file-upload-default">
+                            <input
+                              type="file"
+                              id="Original-Blekke-20"
+                              name="Original-Blekke-12"
+                              data-name="Original Blekke 12"
+                              accept=".pdf"
+                              class="w-file-upload-input"
+                              style="height: 0px; width: 1px"
+                            /><label
+                              for="Original-Blekke-20"
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-label
+                              "
+                            >
                               <div class="w-icon-file-upload-icon"></div>
                               <div class="w-inline-block">Last opp</div>
                             </label>
-                            <div class="dm-form-upload__info w-file-upload-info">PDF, max 10 MB</div>
+                            <div
+                              class="dm-form-upload__info w-file-upload-info"
+                            >
+                              PDF, max 10 MB
+                            </div>
                           </div>
                           <div class="w-file-upload-uploading w-hidden">
-                            <div class="dm-button dm-form__upload-button w-file-upload-uploading-btn"><svg class="dm-form-upload-button__icon w-icon-file-upload-uploading" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-                                <path fill="currentColor" opacity=".2" d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"></path>
-                                <path fill="currentColor" opacity=".75" d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z">
-                                  <animateTransform attributeName="transform" attributeType="XML" dur="0.6s" from="0 15 15" repeatCount="indefinite" to="360 15 15" type="rotate"></animateTransform>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                w-file-upload-uploading-btn
+                              "
+                            >
+                              <svg
+                                class="
+                                  dm-form-upload-button__icon
+                                  w-icon-file-upload-uploading
+                                "
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 30 30"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  opacity=".2"
+                                  d="M15 30a15 15 0 1 1 0-30 15 15 0 0 1 0 30zm0-3a12 12 0 1 0 0-24 12 12 0 0 0 0 24z"
+                                ></path>
+                                <path
+                                  fill="currentColor"
+                                  opacity=".75"
+                                  d="M0 15A15 15 0 0 1 15 0v3A12 12 0 0 0 3 15H0z"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    attributeType="XML"
+                                    dur="0.6s"
+                                    from="0 15 15"
+                                    repeatCount="indefinite"
+                                    to="360 15 15"
+                                    type="rotate"
+                                  ></animateTransform>
                                 </path>
                               </svg>
                               <div class="w-inline-block">Uploading...</div>
                             </div>
                           </div>
                           <div class="w-file-upload-success w-hidden">
-                            <div class="dm-button dm-form__upload-button success-state w-file-upload-file">
-                              <div class="w-file-upload-file-name">fileuploaded.jpg</div>
+                            <div
+                              class="
+                                dm-button
+                                dm-form__upload-button
+                                success-state
+                                w-file-upload-file
+                              "
+                            >
+                              <div class="w-file-upload-file-name">
+                                fileuploaded.jpg
+                              </div>
                               <div class="w-file-remove-link">
                                 <div class="w-icon-file-upload-remove"></div>
                               </div>
                             </div>
                           </div>
-                          <div class="dm-form-upload__error-state-wrapper w-file-upload-error w-hidden">
-                            <div class="w-file-upload-error-msg" data-w-size-error="Opplasting feilet. Fil større enn 10 MB." data-w-type-error="Opplasting feilet. Ugyldig fil-type." data-w-generic-error="Upload failed. Something went wrong. Please retry.">Opplasting feilet. Fil større enn 10 MB.</div>
+                          <div
+                            class="
+                              dm-form-upload__error-state-wrapper
+                              w-file-upload-error w-hidden
+                            "
+                          >
+                            <div
+                              class="w-file-upload-error-msg"
+                              data-w-size-error="Opplasting feilet. Fil større enn 10 MB."
+                              data-w-type-error="Opplasting feilet. Ugyldig fil-type."
+                              data-w-generic-error="Upload failed. Something went wrong. Please retry."
+                            >
+                              Opplasting feilet. Fil større enn 10 MB.
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div><div><label for="Kommentar" class="dm-form__label">Kommentar</label><textarea data-name="Kommentar" maxlength="5000" id="Kommentar" name="Kommentar" placeholder="Gi oss en lyd dersom det er noe vi bør vite. " class="dm-form__input-field w-input"></textarea></div>
+                    </div>
+                    <div>
+                      <label for="Kommentar" class="dm-form__label"
+                        >Kommentar</label
+                      ><textarea
+                        data-name="Kommentar"
+                        maxlength="5000"
+                        id="Kommentar"
+                        name="Kommentar"
+                        placeholder="Gi oss en lyd dersom det er noe vi bør vite. "
+                        class="dm-form__input-field w-input"
+                      ></textarea>
+                    </div>
                   </form>
                   <div class="w-form-done">
                     <div>Thank you! Your submission has been received!</div>
@@ -1001,7 +2142,16 @@
         window.addEventListener("resize", setFullSliderMargin, false);
       }
     </script>
-
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.0.3/scripts/utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.0.3/scripts/lang.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.0.3/scripts/sheetToCp.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.0.3/scripts/cpToSheet.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.0.3/scripts/chordPro.types.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.0.3/scripts/chordPro.transposeLogic.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.0.3/scripts/chordPro.utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.0.3/scripts/chordPro.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.0.3/scripts/chordPro.song.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.0.3/scripts/chordPro.display.js"></script>
     <script src="contribute.js"></script>
   </body>
 </html>

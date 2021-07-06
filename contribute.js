@@ -1,3 +1,79 @@
+// TODO: Should be removed!
+const getCopyrightObject = (songObject) => {
+  let album;
+  let published;
+  let web;
+  let copyright;
+
+  for (let [key, value] of songObject.metadata.extra.entries()) {
+    console.log(key, value);
+    switch ((key || "").toUpperCase()) {
+      case "ALBUM":
+        album = value;
+        break;
+      case "PUBLISHED":
+        published = value;
+        break;
+      case "WEB":
+        web = value;
+        break;
+      case "COPYRIGHT":
+        copyright = value;
+        break;
+    }
+  }
+
+  if (songObject.metadata.album) album = songObject.metadata.album;
+  if (songObject.metadata.copyright) copyright = songObject.metadata.copyright;
+  if (songObject.metadata.published) published = songObject.metadata.published;
+
+  return {
+    album,
+    published,
+    web,
+    copyright,
+    complete: copyright && published && album,
+  };
+};
+
+const displayCopyrightPart = (songObject) => {
+  const copyrightBuffer = [];
+
+  const copyrightObject = getCopyrightObject(songObject);
+
+  console.log(copyrightObject);
+  if (!copyrightObject.complete) return;
+
+  if (copyrightObject.published && copyrightObject.copyright) {
+    copyrightBuffer.push(
+      lang.copyright.main
+        .replaceAll(PUBLISH_YEAR, copyrightObject.published)
+        .replaceAll(COPYRIGHT, copyrightObject.copyright)
+        .replaceAll(SONG_TITLE, songObject.metadata.title)
+        .replaceAll(
+          ARTIST_NAME,
+          songObject.metadata.artist.trim().endsWith("s")
+            ? songObject.metadata.artist.trim()
+            : songObject.metadata.artist.trim() + "s"
+        )
+        .replaceAll(
+          ALBUM_NAME,
+          copyrightObject.album
+            ? copyrightObject.album
+            : songObject.metadata.title
+        )
+        .replaceAll(ALBUM, copyrightObject.album ? ALBUM : "singel")
+        .replaceAll("\n", "</br>")
+    );
+  }
+  /*if (copyrightObject.web) {
+    copyrightBuffer.push('</br>');
+    copyrightBuffer.push(lang.copyright.moreInfo.replaceAll(WEB_PAGE, copyrightObject.web));
+  }*/
+
+  return copyrightBuffer.join("\n").wrapHTML("DIV", "cp-copyright-wrapper");
+};
+
 const initializeContributeForm = () => {
   /* Helpers */
   const TEXT = "TEXT";
@@ -25,6 +101,7 @@ const initializeContributeForm = () => {
     },
     album: {
       title: "",
+      type: "",
       artist: "",
       releaseDate: "",
       producers: "",
@@ -202,10 +279,10 @@ const initializeContributeForm = () => {
       row.push(removeHash(s.linkSpotify)); // "Link: Spotify," +
       row.push(removeHash(s.linkSpotify)); // "Link: Spotify II," +
       row.push(removeHash(s.linkAppleMusic)); // "iTunes / Apple Music," +
-      row.push(""); // "Original toneart," + // TODO
-      row.push(""); // "Tempo," + // TODO
-      row.push(""); // "Taktart," + // TODO
-      row.push(""); // "ChordPro-fil," + // TODO
+      row.push(s.chart.key); // "Original toneart," +
+      row.push(s.chart.tempo); // "Tempo," +
+      row.push(s.chart.time); // "Taktart," +
+      row.push(s.chart.chordProSum.replace("\n", "{(--)}")); // "ChordPro-fil," +
       row.push(""); // "Dagens refreng," + // TODO: implement
 
       rows.push(row.join(","));
@@ -512,7 +589,10 @@ const initializeContributeForm = () => {
       }
 
       if (songFieldObject.reRenderSongList || songFieldObject.required) {
-        Element.addEventListener("change", renderCallback); // ERROR: correct?
+        Element.addEventListener(
+          songFieldObject.triggerOnInput ? "input" : "change",
+          renderCallback
+        ); // ERROR: correct?
       }
 
       Element.addEventListener("change", () => {
@@ -577,6 +657,7 @@ const initializeContributeForm = () => {
 
   const newSong = (renderCallback) => {
     /* Patch song to inputs */
+
     const newSong = {
       validState: false,
       title: "Ny sang",
@@ -594,6 +675,15 @@ const initializeContributeForm = () => {
       contributors: "",
       linkSpotify: "",
       linkAppleMusic: "",
+      chart: {
+        validState: false,
+        key: "",
+        tempo: "",
+        time: "",
+        copyright: "",
+        chordProBody: "",
+        chordProSum: "",
+      },
     };
 
     state.songs.push(newSong);
@@ -620,17 +710,53 @@ const initializeContributeForm = () => {
     }
   };
 
+  const generateTemplateFromSong = () => {
+    const song = state.currentSong;
+
+    console.log(song);
+
+    if (!song || !song.title.length || !song.artist || !song.chart.key.length)
+      return "";
+
+    const buffer = [];
+
+    buffer.push(`${song.title}`);
+    buffer.push(`${song.artist}`);
+    buffer.push(`Key: ${song.chart.key ?? ""}`);
+    if (song.chart.tempo.length) buffer.push(`Tempo: ${song.chart.tempo}`);
+    if (song.chart.time.length) buffer.push(`Time: ${song.chart.time}`);
+    if (state.album.title.length) buffer.push(`Album: ${state.album.title}`);
+    if (song.chart.copyright.length)
+      buffer.push(`Copyright: ${song.chart.copyright}`);
+    if (state.artist.web) buffer.push(`Web: ${state.artist.web}`);
+    if (state.album.releaseDate.length)
+      buffer.push(
+        `Published: ${new Date(state.album.releaseDate).getFullYear()}`
+      );
+    buffer.push(` `);
+    if (song.chart.chordProBody.length) buffer.push(song.chart.chordProBody);
+
+    song.chart.chordProSum = buffer.join("\n");
+
+    console.log(buffer.join("\n"));
+
+    return buffer.join("\n");
+  };
+
   const patchObjectStateObjectToFormFragment = (
     objectStateObject,
     objectFormFields,
-    validateCallback = undefined
+    validateCallback = undefined,
+    type
   ) => {
     if (!objectStateObject) throw new Error("songStateObject not set");
 
     for (const [key, value] of Object.entries(objectStateObject)) {
       if (key in objectFormFields) {
         const Inputs =
-          objectFormFields[key].DOMElement.querySelectorAll("input");
+          objectFormFields[key].inputType === TEXTAREA
+            ? objectFormFields[key].DOMElement.querySelectorAll("textarea")
+            : objectFormFields[key].DOMElement.querySelectorAll("input");
 
         if (!Inputs)
           console.error("InputElement could not be found for key " + key);
@@ -641,25 +767,35 @@ const initializeContributeForm = () => {
           } else {
             Input.value = value;
           }
-          Input.onchange = () => {
-            objectStateObject[key] = Input.value;
-          };
+          if (objectFormFields[key].triggerOnInput)
+            Input.oninput = () => {
+              objectStateObject[key] = Input.value;
+            };
+          else
+            Input.onchange = () => {
+              objectStateObject[key] = Input.value;
+            };
         }
       }
     }
 
-    if (validateCallback && state.currentSong)
-      state.currentSong.validState = validateCallback();
+    if (validateCallback) {
+      if (type === "CHART") {
+        state.currentSong.chart.validState = validateCallback();
+      } else if (validateCallback && state.currentSong) {
+        state.currentSong.validState = validateCallback();
+      }
+    }
   };
 
-  const SongList = (renderCallback) => {
+  const SongList = (renderCallback, hideControls = false) => {
     const SongListWrapper = Element("div");
 
     const ButtonWrapper = Element(
       "div",
       "dm-contribute-form__song-tab-buttons-wrapper"
     );
-    SongListWrapper.appendChild(ButtonWrapper);
+    if (!hideControls) SongListWrapper.appendChild(ButtonWrapper);
 
     const NewSongButton = Element("a", "dm-button");
     NewSongButton.innerHTML = "+ legg til sang";
@@ -705,6 +841,43 @@ const initializeContributeForm = () => {
       };
 
       Ul.appendChild(Li);
+    });
+
+    return SongListWrapper;
+  };
+
+  const SongWithChartList = (renderCallback) => {
+    const SongListWrapper = Element("div");
+
+    const SongsUl = Element("ul", "dm-contribute-form__song-list");
+    SongListWrapper.appendChild(SongsUl);
+
+    state.songs.forEach((songStateObject) => {
+      const SongLi = Element(
+        "li",
+        "dm-song-list-item-wrapper",
+        "dm-contribute-form__song-list-item"
+      );
+
+      if (state.currentSong === songStateObject)
+        SongLi.classList.add("selected");
+      if (!songStateObject.validState) SongLi.classList.add("error");
+
+      const content = `
+      <div class='l-bold'>${songStateObject.songNumber}</div>
+      <div class='l-bold'>${songStateObject.title}</div>
+      `;
+
+      SongLi.innerHTML = content;
+
+      /* Set clicked song as current song */
+      SongLi.onclick = () => {
+        state.currentSong = songStateObject;
+
+        renderCallback();
+      };
+
+      SongsUl.appendChild(SongLi);
     });
 
     return SongListWrapper;
@@ -859,12 +1032,23 @@ const initializeContributeForm = () => {
     /* Create Album Form Elements */
     const formFields = {
       title: {
-        labelText: "Albumtittel",
+        labelText: "Navn på utgivelse",
         detailesLabelText: null,
         inputType: TEXT,
         required: true,
         DOMElement: null,
         reRenderSongList: false,
+      },
+      type: {
+        labelText: "Type utgivelse",
+        detailesLabelText: null,
+        inputType: RADIO,
+        required: true,
+        DOMElement: null,
+        radioObjectList: [
+          { value: "Album", labelText: "Album (flere sanger)" },
+          { value: "Singel", labelText: "Singel (kun én sang)" },
+        ],
       },
       artist: {
         labelText: "Artist(er)",
@@ -1077,6 +1261,14 @@ const initializeContributeForm = () => {
         required: false,
         DOMElement: null,
       },
+      CCLI: {
+        labelText: "CCLI-nummer",
+        detailesLabelText: null,
+        inputType: TEXT,
+        required: false,
+        DOMElement: null,
+        reRenderSongList: true,
+      },
       linkSpotify: {
         labelText: "Link til sangen på Spotify",
         detailesLabelText: null,
@@ -1111,29 +1303,133 @@ const initializeContributeForm = () => {
 
   const ChartsTab = () => {
     let tabRenderCallback = undefined;
-
+    let song = undefined;
     const setTabRenderCallback = (callback) => (tabRenderCallback = callback);
 
     const TabWrapper = Element("div");
 
     /* Rerender start */
     const SongListElementRenderWrapper = Element("div");
+    const ChartRenderWrapper = Element("div");
 
     const renderCallback = () => {
+      if (state.currentSong?.chart) {
+        Fields.DOMElement.classList.remove("hide");
+        console.log(state.currentSong.chart);
+        patchObjectStateObjectToFormFragment(
+          state.currentSong.chart,
+          Fields.formFields,
+          Fields.validate,
+          "CHART"
+        );
+      } else {
+        Fields.DOMElement.classList.add("hide");
+      }
+      SongListElementRenderWrapper.innerHTML = "";
+
+      state.songs.sort((a, b) => a.songNumber - b.songNumber);
+
+      console.log(state.songs);
+
+      SongListElementRenderWrapper.appendChild(SongList(renderCallback, true));
+
+      song = newSongObjectFromTemplate(sheetToCp(generateTemplateFromSong()));
+
+      ChartRenderWrapper.innerHTML = "";
+
+      console.log(song);
+      try {
+        ChartRenderWrapper.innerHTML += songObjectToHtmlTable(song) ?? "";
+        ChartRenderWrapper.innerHTML += displayCopyrightPart(song) ?? "";
+      } catch (e) {
+        console.error(e);
+      }
+
       if (tabRenderCallback) tabRenderCallback();
     };
 
     /* Rerender end */
 
-    TabWrapper.innerHTML +=
-      'Blekkegenerator kommer ila fredag. Samme som tidligere (<a href="https://lovsang.netlify.app" style="text-decoration:underline;">https://lovsang.netlify.app</a>), bare som en integrert del av løsningen.';
+    SongListElementRenderWrapper.appendChild(SongList(renderCallback, true));
+
+    TabWrapper.appendChild(SongListElementRenderWrapper);
+    const ColumnsGrid = Element("div", "dm-contribute-chart__columns-wrapper");
+    const LeftColumn = Element("div");
+    const RightColumn = Element("div", "dm-content-box");
+    RightColumn.appendChild(ChartRenderWrapper);
+    ColumnsGrid.appendChild(LeftColumn);
+    ColumnsGrid.appendChild(RightColumn);
+    TabWrapper.appendChild(ColumnsGrid);
+
+    /* Create Song Form Elements */
+    const formFields = {
+      key: {
+        labelText: "Toneart",
+        detailesLabelText: null,
+        inputType: TEXT,
+        required: true,
+        DOMElement: null,
+        reRenderSongList: true,
+        triggerOnInput: true,
+      },
+      tempo: {
+        labelText: "Tempo",
+        detailesLabelText: null,
+        inputType: TEXT,
+        required: false,
+        DOMElement: null,
+        reRenderSongList: true,
+        triggerOnInput: true,
+      },
+      time: {
+        labelText: "Taktart",
+        detailesLabelText: null,
+        inputType: TEXT,
+        required: false,
+        DOMElement: null,
+        reRenderSongList: true,
+        triggerOnInput: true,
+      },
+      copyright: {
+        labelText: "Copyright",
+        detailesLabelText: null,
+        inputType: TEXT,
+        required: false,
+        DOMElement: null,
+        reRenderSongList: true,
+        triggerOnInput: true,
+      },
+      chordProBody: {
+        labelText: "Sang",
+        detailesLabelText: "Se videoen over dersom du står fast.",
+        inputType: TEXTAREA,
+        required: true,
+        DOMElement: null,
+        reRenderSongList: true,
+        triggerOnInput: true,
+      },
+    };
+
+    const Fields = FormFieldsFromObject({
+      formFields: formFields,
+      renderCallback: renderCallback,
+    });
+
+    LeftColumn.appendChild(Fields.DOMElement);
 
     renderCallback();
 
     return {
       TabWrapper: TabWrapper,
-      hasValidState: true,
+      hasValidState: Fields.validate,
       setTabRenderCallback,
+      rerenderFromParent: () => {
+        SongListElementRenderWrapper.innerHTML = "";
+
+        SongListElementRenderWrapper.appendChild(
+          SongWithChartList(renderCallback)
+        );
+      },
     };
   };
 
@@ -1245,7 +1541,7 @@ const initializeContributeForm = () => {
     AttatchmentsTabContent.classList.remove("hide");
 
     const tabState = {
-      currentTabIndex: 0,
+      currentTabIndex: 3,
       tabs: [
         {
           index: 0,
@@ -1281,7 +1577,18 @@ const initializeContributeForm = () => {
           index: 3,
           DOMButton: ChartTabButton,
           DOMContent: chartsTabContent.TabWrapper,
-          hasValidState: () => true,
+          hasValidState: () => {
+            let validState = true;
+            state.songs.forEach((song) => {
+              if (!song.chart.validState) {
+                validState = false;
+                return;
+              }
+            });
+            return validState;
+          },
+          setCallback: chartsTabContent.setTabRenderCallback,
+          rerenderChild: chartsTabContent.rerenderFromParent,
         },
         {
           index: 4,
@@ -1311,6 +1618,8 @@ const initializeContributeForm = () => {
             tab.DOMButton.classList.add("error");
           }
         }
+
+        if (tab.rerenderChild) tab.rerenderChild();
       });
     };
 
