@@ -598,13 +598,15 @@ const initializeContributeForm = () => {
     Label.setAttribute("for", id);
     Label.innerHTML = labelText + (required ? " *" : "");
 
-    const InputDiv = Element("div", "dm-form__input-field", "customTextarea");
-    InputDiv.role = "input";
-    InputDiv.setAttribute("contenteditable", "plaintext-only");
-    InputDiv.style.minHeight = 10 + "rem";
-    InputDiv.addEventListener("input", (e) => {
-      InputDiv.setAttribute("value", e.target.innerText);
-      console.log(e.value);
+    const Textarea = Element("textarea", "dm-form__input-field", "textarea");
+    Textarea.id = id;
+    Textarea.name = name;
+    Textarea.style.minHeight = rowsHight ?? 6 + "em";
+    Textarea.required = required ?? false;
+
+    Textarea.addEventListener("input", () => {
+      Textarea.style.height = "5px";
+      Textarea.style.height = Textarea.scrollHeight + "px";
     });
 
     Wrapper.appendChild(Label);
@@ -618,7 +620,7 @@ const initializeContributeForm = () => {
       Wrapper.appendChild(DetailedLabel);
     }
 
-    Wrapper.appendChild(InputDiv);
+    Wrapper.appendChild(Textarea);
 
     return Wrapper;
   };
@@ -708,10 +710,10 @@ const initializeContributeForm = () => {
         if (
           songFieldObject.required &&
           songFieldObject.DOMElement.querySelector(
-            songFieldObject === TEXTAREA ? ".customTextarea" : "input"
+            songFieldObject === TEXTAREA ? "textarea" : "input"
           ) &&
           !songFieldObject.DOMElement.querySelector(
-            songFieldObject === TEXTAREA ? ".customTextarea" : "input"
+            songFieldObject === TEXTAREA ? "textarea" : "input"
           )?.value?.trim()?.length
         ) {
           hasValidState = false;
@@ -838,9 +840,7 @@ const initializeContributeForm = () => {
       if (key in objectFormFields) {
         const Inputs =
           objectFormFields[key].inputType === TEXTAREA
-            ? objectFormFields[key].DOMElement.querySelectorAll(
-                ".customTextarea"
-              )
+            ? objectFormFields[key].DOMElement.querySelectorAll("textarea")
             : objectFormFields[key].DOMElement.querySelectorAll("input");
 
         if (!Inputs)
@@ -852,16 +852,12 @@ const initializeContributeForm = () => {
           } else if (objectFormFields[key].inputType === MULTIPLE_CHOISE) {
             Input.checked = value.indexOf(Input.value) !== -1;
           } else {
-            objectFormFields[key].inputType === TEXTAREA
-              ? (Input.innerText = value)
-              : (Input.value = value);
+            Input.value = value;
           }
+
           if (objectFormFields[key].triggerOnInput) {
             Input.oninput = () => {
-              objectStateObject[key] =
-                objectFormFields[key].inputType === TEXTAREA
-                  ? Input.innerText
-                  : Input.value;
+              objectStateObject[key] = Input.value;
             };
           } else {
             if (objectFormFields[key].inputType === MULTIPLE_CHOISE) {
@@ -875,10 +871,7 @@ const initializeContributeForm = () => {
               };
             } else {
               Input.onchange = () => {
-                objectStateObject[key] =
-                  objectFormFields[key].inputType === TEXTAREA
-                    ? Input.innerText
-                    : Input.value;
+                objectStateObject[key] = Input.value;
               };
             }
           }
@@ -1469,7 +1462,7 @@ const initializeContributeForm = () => {
         labelText: "Copyright",
         detailesLabelText: null,
         inputType: TEXT,
-        required: false,
+        required: true,
         DOMElement: null,
         reRenderSongList: true,
         triggerOnInput: true,
