@@ -713,8 +713,6 @@ const initializeContributeForm = () => {
   const generateTemplateFromSong = () => {
     const song = state.currentSong;
 
-    console.log(song);
-
     if (!song || !song.title.length || !song.artist || !song.chart.key.length)
       return "";
 
@@ -737,8 +735,6 @@ const initializeContributeForm = () => {
     if (song.chart.chordProBody.length) buffer.push(song.chart.chordProBody);
 
     song.chart.chordProSum = buffer.join("\n");
-
-    console.log(buffer.join("\n"));
 
     return buffer.join("\n");
   };
@@ -1315,7 +1311,6 @@ const initializeContributeForm = () => {
     const renderCallback = () => {
       if (state.currentSong?.chart) {
         Fields.DOMElement.classList.remove("hide");
-        console.log(state.currentSong.chart);
         patchObjectStateObjectToFormFragment(
           state.currentSong.chart,
           Fields.formFields,
@@ -1329,15 +1324,13 @@ const initializeContributeForm = () => {
 
       state.songs.sort((a, b) => a.songNumber - b.songNumber);
 
-      console.log(state.songs);
-
       SongListElementRenderWrapper.appendChild(SongList(renderCallback, true));
-
-      song = newSongObjectFromTemplate(sheetToCp(generateTemplateFromSong()));
 
       ChartRenderWrapper.innerHTML = "";
 
-      console.log(song);
+      if (state.currentSong)
+        song = newSongObjectFromTemplate(sheetToCp(generateTemplateFromSong()));
+
       try {
         ChartRenderWrapper.innerHTML += songObjectToHtmlTable(song) ?? "";
         ChartRenderWrapper.innerHTML += displayCopyrightPart(song) ?? "";
