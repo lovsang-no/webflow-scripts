@@ -1609,7 +1609,7 @@ const initializeContributeForm = () => {
     AttatchmentsTabContent.classList.remove("hide");
 
     const tabState = {
-      currentTabIndex: 2,
+      currentTabIndex: 1,
       tabs: [
         {
           index: 0,
