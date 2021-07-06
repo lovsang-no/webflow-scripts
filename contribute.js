@@ -79,6 +79,8 @@ const initializeContributeForm = () => {
   const DATE = "DATE";
   const RADIO = "RADIO";
   const NUMBER = "NUMBER";
+  const MULTIPLE_CHOISE = "MULTIPLE_CHOISE";
+
   const removeHash = (url) => url.split("?")[0];
 
   /* State */
@@ -121,7 +123,7 @@ const initializeContributeForm = () => {
   let autosaveTimeoutMs = 5000;
 
   const saveStateToLocalStorage = () => {
-    localStorage.setItem("contribute-form-state", JSON.stringify(state));
+    localStorage.setItem("contribute-form-state", JSON.stringify(getState()));
   };
 
   const deleteLocalStorageState = () => {
@@ -272,7 +274,7 @@ const initializeContributeForm = () => {
       row.push(album.releaseDate); // "Utgivelsesdato," +
       row.push(s.songType); // "Type sang," +
       row.push(s.songNumber); // "Sangnummer," +
-      row.push(""); // "Tema," + // TODO: Implement themes
+      row.push(s.themes.join("-")); // "Tema," + // TODO: Implement themes
       row.push(s.aboutSong); // "Om sangen," +
       row.push(s.recommendedKeys); // "Anbefalte tonearter," +
       row.push(s.scripture); // "Bibelreferanse(r)," +
@@ -291,6 +293,7 @@ const initializeContributeForm = () => {
       rows.push(row.join(","));
     });
 
+    console.log("\n" + rows.join(","));
     return headings + "\n" + rows.join(",");
   };
 
@@ -509,6 +512,78 @@ const initializeContributeForm = () => {
     return Wrapper;
   };
 
+  const ChoiseInputWithLabel = ({
+    name,
+    id,
+    labelText,
+    detailesLabelText,
+    required,
+  }) => {
+    const Wrapper = Element("div");
+
+    const Label = Element("label", "dm-form__label", "radio");
+    Label.setAttribute("for", id);
+    Label.innerHTML = labelText;
+
+    const RadioInput = Element("input");
+    RadioInput.type = "checkbox";
+    RadioInput.id = id;
+    RadioInput.value = labelText;
+    RadioInput.name = name;
+    RadioInput.required = required ?? false;
+
+    Wrapper.appendChild(RadioInput);
+
+    if (detailesLabelText) {
+      const DetailedLabel = Element(
+        "div",
+        "dm-contribute-form__detailed-label"
+      );
+      DetailedLabel.innerHTML = detailesLabelText;
+      Wrapper.appendChild(DetailedLabel);
+    }
+
+    Wrapper.appendChild(Label);
+
+    return { Wrapper: Wrapper, Input: RadioInput };
+  };
+
+  const MultipleChoiseGroupWithLabel = ({
+    name,
+    id,
+    labelText,
+    detailesLabelText,
+    required,
+    radioObjectList,
+  }) => {
+    const Wrapper = Element("div", "dm-form__radio-group");
+    const LabelText = Element("div", "dm-form__label", "radio-title");
+    LabelText.innerHTML = labelText + (required ? " *" : "");
+    Wrapper.appendChild(LabelText);
+
+    if (detailesLabelText) {
+      const DetailedLabel = Element(
+        "div",
+        "dm-contribute-form__detailed-label"
+      );
+      DetailedLabel.innerHTML = detailesLabelText;
+      Wrapper.appendChild(DetailedLabel);
+    }
+
+    for (const radioObject of radioObjectList) {
+      const radioInputObject = ChoiseInputWithLabel({
+        name: name,
+        id: id + radioObject.value,
+        labelText: radioObject.labelText,
+        required: required,
+      });
+
+      Wrapper.appendChild(radioInputObject.Wrapper);
+    }
+
+    return Wrapper;
+  };
+
   const TextareaWithLabel = ({
     name,
     id,
@@ -581,6 +656,13 @@ const initializeContributeForm = () => {
           Element = RadioInputGroupWithLabel({
             ...elementInfo,
             radioObjectList: songFieldObject.radioObjectList,
+          });
+          SongWrapper.appendChild(Element);
+          break;
+        case MULTIPLE_CHOISE:
+          Element = MultipleChoiseGroupWithLabel({
+            ...elementInfo,
+            radioObjectList: songFieldObject.choiseObjectList,
           });
           SongWrapper.appendChild(Element);
           break;
@@ -666,7 +748,7 @@ const initializeContributeForm = () => {
         : 1,
       artist: "",
       songType: "",
-      themes: "",
+      themes: [],
       aboutSong: "",
       recommendedKeys: "",
       scripture: "",
@@ -767,8 +849,12 @@ const initializeContributeForm = () => {
         for (const Input of Inputs) {
           if (objectFormFields[key].inputType === RADIO) {
             Input.checked = Input.value === value;
+          } else if (objectFormFields[key].inputType === MULTIPLE_CHOISE) {
+            Input.checked = value.indexOf(Input.value) !== -1;
           } else {
-            Input.value = value;
+            objectFormFields[key].inputType === TEXTAREA
+              ? (Input.innerText = value)
+              : (Input.value = value);
           }
           if (objectFormFields[key].triggerOnInput) {
             Input.oninput = () => {
@@ -778,12 +864,23 @@ const initializeContributeForm = () => {
                   : Input.value;
             };
           } else {
-            Input.oninput = () => {
-              objectStateObject[key] =
-                objectFormFields[key].inputType === TEXTAREA
-                  ? Input.innerText
-                  : Input.value;
-            };
+            if (objectFormFields[key].inputType === MULTIPLE_CHOISE) {
+              Input.onchange = () => {
+                if (Input.checked) objectStateObject[key].push(Input.value);
+                else
+                  objectStateObject[key] = objectStateObject[key].filter(
+                    (x) => x !== Input.value
+                  );
+                console.log(getState());
+              };
+            } else {
+              Input.onchange = () => {
+                objectStateObject[key] =
+                  objectFormFields[key].inputType === TEXTAREA
+                    ? Input.innerText
+                    : Input.value;
+              };
+            }
           }
         }
       }
@@ -1177,15 +1274,24 @@ const initializeContributeForm = () => {
         ],
       },
       themes: {
-        labelText: "Type sang",
-        detailesLabelText: null,
-        inputType: RADIO,
+        labelText: "Tema",
+        detailesLabelText: "Max 4 tema",
+        inputType: MULTIPLE_CHOISE,
         required: true,
         DOMElement: null,
-        radioObjectList: [
-          { value: "Lovsang", labelText: "Lovsang" },
-          { value: "Formidlingssang", labelText: "Formidlingssang" },
-          { value: "FungerereSomBegge", labelText: "Fungerer som begge" },
+        choiseObjectList: [
+          { value: "GudsNærvær", labelText: "Guds nærvær" },
+          { value: "Identitet", labelText: "Identitet" },
+          { value: "NådeOgKors", labelText: "Nåde og kors" },
+          { value: "Jul", labelText: "Jul" },
+          { value: "Fornyelse", labelText: "Fornyelse" },
+          { value: "Overgivelse", labelText: "Overgivelse" },
+          { value: "Respons", labelText: "Respons og innbydelse" },
+          { value: "Bønn", labelText: "Bønn" },
+          { value: "TroTillit", labelText: "Tro og tillit" },
+          { value: "Proklamasjon", labelText: "Proklamasjon" },
+          { value: "Tilbedelse", labelText: "Tilbedelse" },
+          { value: "TakkLovpris", labelText: "Takk og lovprisning" },
         ],
       },
       aboutSong: {
@@ -1510,7 +1616,7 @@ const initializeContributeForm = () => {
     AttatchmentsTabContent.classList.remove("hide");
 
     const tabState = {
-      currentTabIndex: 0,
+      currentTabIndex: 2,
       tabs: [
         {
           index: 0,
