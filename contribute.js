@@ -6,7 +6,6 @@ const getCopyrightObject = (songObject) => {
   let copyright;
 
   for (let [key, value] of songObject.metadata.extra.entries()) {
-    console.log(key, value);
     switch ((key || "").toUpperCase()) {
       case "ALBUM":
         album = value;
@@ -41,7 +40,6 @@ const displayCopyrightPart = (songObject) => {
 
   const copyrightObject = getCopyrightObject(songObject);
 
-  console.log(copyrightObject);
   if (!copyrightObject.complete) return;
 
   if (copyrightObject.published && copyrightObject.copyright) {
@@ -84,35 +82,40 @@ const initializeContributeForm = () => {
   const removeHash = (url) => url.split("?")[0];
 
   /* State */
-  let state = {
-    artist: {
-      name: "",
-      about: "",
-      location: "",
-      church: "",
-      connectedArtists: "",
-      linkAppleMusic: "",
-      linkSpotify: "",
-      linkYouTube: "",
-      linkVimeo: "",
-      linkFacebook: "",
-      linkInstagram: "",
-      linkWebpage: "",
+  const statePers = [
+    {
+      artist: {
+        name: "",
+        about: "",
+        location: "",
+        church: "",
+        connectedArtists: "",
+        linkAppleMusic: "",
+        linkSpotify: "",
+        linkYouTube: "",
+        linkVimeo: "",
+        linkFacebook: "",
+        linkInstagram: "",
+        linkWebpage: "",
+      },
+      album: {
+        title: "",
+        type: "",
+        artist: "",
+        releaseDate: "",
+        producers: "",
+        label: "",
+        linkTracks: "",
+        linkAppleMusic: "",
+        linkSpotify: "",
+      },
+      currentSong: null,
+      songs: [],
     },
-    album: {
-      title: "",
-      type: "",
-      artist: "",
-      releaseDate: "",
-      producers: "",
-      label: "",
-      linkTracks: "",
-      linkAppleMusic: "",
-      linkSpotify: "",
-    },
-    currentSong: null,
-    songs: [],
-  };
+  ];
+
+  const getState = () => statePers[0];
+  const setState = (state) => (statePers[0] = state);
 
   let autosaveTimeout;
   let autosaveTimeoutMs = 5000;
@@ -128,11 +131,11 @@ const initializeContributeForm = () => {
   const retrieveStateFromLocalStorage = () => {
     const item = localStorage.getItem("contribute-form-state");
     if (!item) return;
-    state = JSON.parse(item);
+    setState(JSON.parse(item));
   };
 
   const clearState = () => {
-    state = {
+    setState({
       artist: {
         name: "",
         location: "",
@@ -158,7 +161,7 @@ const initializeContributeForm = () => {
       },
       currentSong: null,
       songs: [],
-    };
+    });
   };
 
   retrieveStateFromLocalStorage();
@@ -180,7 +183,7 @@ const initializeContributeForm = () => {
       "Sted,";
 
     const row = [];
-    const a = state.artist;
+    const a = getState().artist;
     row.push(a.name); // "Navn," +
     row.push(a.name.toLowerCase().replace(/ +/g, "-")); // "Slug," +
     row.push(a.church); // "Tilhørighet," +
@@ -213,7 +216,7 @@ const initializeContributeForm = () => {
       "Spotify";
 
     const row = [];
-    const a = state.album;
+    const a = getState().album;
     row.push(a.title + " - " + a.artist); // "Albumtittel - Artist," +
     row.push((a.title + " " + a.artist).toLowerCase().replace(/ +/g, "-")); // "Slug," +
     row.push(a.title); // "Albumtittel," +
@@ -256,10 +259,10 @@ const initializeContributeForm = () => {
 
     const rows = [];
 
-    const artist = state.artist;
-    const album = state.album;
+    const artist = getState().artist;
+    const album = getState().album;
 
-    state.songs.forEach((s) => {
+    getState().songs.forEach((s) => {
       const row = [];
       row.push(s.title + " - " + s.artist); // "Sangtittel - Artist," +
       row.push((s.title + " " + s.artist).toLowerCase().replace(/ +/g, "-")); // "Slug," +
@@ -292,8 +295,6 @@ const initializeContributeForm = () => {
   };
 
   const setWebflowFormValues = () => {
-    console.log("hello");
-    console.log(albumStateToCSVString());
     const SubmissionId = document.getElementById("submission-id");
     const ArtistCsv = document.getElementById("artist-csv");
     const AlbumCsv = document.getElementById("album-csv");
@@ -305,7 +306,7 @@ const initializeContributeForm = () => {
       );
 
     SubmissionId.value =
-      Date.now().valueOf() + state.album.title.replace(/ +/g, "-");
+      Date.now().valueOf() + getState().album.title.replace(/ +/g, "-");
 
     ArtistCsv.value = artistStateToCSVString();
     AlbumCsv.value = albumStateToCSVString();
@@ -318,7 +319,7 @@ const initializeContributeForm = () => {
     );
 
     elements.forEach((e, index) => {
-      if (index > state.songs.length - 1) {
+      if (index > getState().songs.length - 1) {
         e.classList.add("hide");
       } else {
         e.classList.remove("hide");
@@ -522,11 +523,14 @@ const initializeContributeForm = () => {
     Label.setAttribute("for", id);
     Label.innerHTML = labelText + (required ? " *" : "");
 
-    const Textarea = Element("textarea", "dm-form__input-field", "textarea");
-    Textarea.id = id;
-    Textarea.name = name;
-    Textarea.style.minHeight = rowsHight ?? 6 + "em";
-    Textarea.required = required ?? false;
+    const InputDiv = Element("div", "dm-form__input-field", "customTextarea");
+    InputDiv.role = "input";
+    InputDiv.setAttribute("contenteditable", "plaintext-only");
+    InputDiv.style.minHeight = 10 + "rem";
+    InputDiv.addEventListener("input", (e) => {
+      InputDiv.setAttribute("value", e.target.innerText);
+      console.log(e.value);
+    });
 
     Wrapper.appendChild(Label);
 
@@ -539,7 +543,7 @@ const initializeContributeForm = () => {
       Wrapper.appendChild(DetailedLabel);
     }
 
-    Wrapper.appendChild(Textarea);
+    Wrapper.appendChild(InputDiv);
 
     return Wrapper;
   };
@@ -622,18 +626,12 @@ const initializeContributeForm = () => {
         if (
           songFieldObject.required &&
           songFieldObject.DOMElement.querySelector(
-            songFieldObject === TEXTAREA ? "textarea" : "input"
+            songFieldObject === TEXTAREA ? ".customTextarea" : "input"
           ) &&
           !songFieldObject.DOMElement.querySelector(
-            songFieldObject === TEXTAREA ? "textarea" : "input"
+            songFieldObject === TEXTAREA ? ".customTextarea" : "input"
           )?.value?.trim()?.length
         ) {
-          console.log(
-            "Val",
-            songFieldObject.DOMElement.querySelector(
-              songFieldObject === TEXTAREA ? "textarea" : "input"
-            ).value
-          );
           hasValidState = false;
           songFieldObject.DOMElement.querySelectorAll("input").forEach((i) =>
             i.classList?.add("error")
@@ -661,8 +659,10 @@ const initializeContributeForm = () => {
     const newSong = {
       validState: false,
       title: "Ny sang",
-      songNumber: state.songs.length
-        ? parseInt(state.songs[state.songs.length - 1].songNumber || "0") + 1
+      songNumber: getState().songs.length
+        ? parseInt(
+            getState().songs[getState().songs.length - 1].songNumber || "0"
+          ) + 1
         : 1,
       artist: "",
       songType: "",
@@ -686,9 +686,9 @@ const initializeContributeForm = () => {
       },
     };
 
-    state.songs.push(newSong);
+    getState().songs.push(newSong);
 
-    state.currentSong = state.songs[state.songs.length - 1];
+    getState().currentSong = getState().songs[getState().songs.length - 1];
 
     renderCallback();
   };
@@ -697,21 +697,25 @@ const initializeContributeForm = () => {
     if (
       confirm(
         'Er du sikker på at du vil slette sangen "' +
-          state.currentSong.title +
+          getState().currentSong.title +
           '"? Alt du har skrevet inn om sangen slettes. \n\nDenne handlingen kan ikke angres.'
       )
     ) {
       /* Patch song to inputs */
-      state.songs = state.songs.filter((song) => song !== state.currentSong);
+      getState().songs = getState().songs.filter(
+        (song) => song !== getState().currentSong
+      );
 
-      state.currentSong = state.songs.length ? state.songs[0] : null;
+      getState().currentSong = getState().songs.length
+        ? getState().songs[0]
+        : null;
 
       renderCallback();
     }
   };
 
   const generateTemplateFromSong = () => {
-    const song = state.currentSong;
+    const song = getState().currentSong;
 
     if (!song || !song.title.length || !song.artist || !song.chart.key.length)
       return "";
@@ -723,13 +727,14 @@ const initializeContributeForm = () => {
     buffer.push(`Key: ${song.chart.key ?? ""}`);
     if (song.chart.tempo.length) buffer.push(`Tempo: ${song.chart.tempo}`);
     if (song.chart.time.length) buffer.push(`Time: ${song.chart.time}`);
-    if (state.album.title.length) buffer.push(`Album: ${state.album.title}`);
+    if (getState().album.title.length)
+      buffer.push(`Album: ${getState().album.title}`);
     if (song.chart.copyright.length)
       buffer.push(`Copyright: ${song.chart.copyright}`);
-    if (state.artist.web) buffer.push(`Web: ${state.artist.web}`);
-    if (state.album.releaseDate.length)
+    if (getState().artist.web) buffer.push(`Web: ${getState().artist.web}`);
+    if (getState().album.releaseDate.length)
       buffer.push(
-        `Published: ${new Date(state.album.releaseDate).getFullYear()}`
+        `Published: ${new Date(getState().album.releaseDate).getFullYear()}`
       );
     buffer.push(` `);
     if (song.chart.chordProBody.length) buffer.push(song.chart.chordProBody);
@@ -751,7 +756,9 @@ const initializeContributeForm = () => {
       if (key in objectFormFields) {
         const Inputs =
           objectFormFields[key].inputType === TEXTAREA
-            ? objectFormFields[key].DOMElement.querySelectorAll("textarea")
+            ? objectFormFields[key].DOMElement.querySelectorAll(
+                ".customTextarea"
+              )
             : objectFormFields[key].DOMElement.querySelectorAll("input");
 
         if (!Inputs)
@@ -763,23 +770,30 @@ const initializeContributeForm = () => {
           } else {
             Input.value = value;
           }
-          if (objectFormFields[key].triggerOnInput)
+          if (objectFormFields[key].triggerOnInput) {
             Input.oninput = () => {
-              objectStateObject[key] = Input.value;
+              objectStateObject[key] =
+                objectFormFields[key].inputType === TEXTAREA
+                  ? Input.innerText
+                  : Input.value;
             };
-          else
-            Input.onchange = () => {
-              objectStateObject[key] = Input.value;
+          } else {
+            Input.oninput = () => {
+              objectStateObject[key] =
+                objectFormFields[key].inputType === TEXTAREA
+                  ? Input.innerText
+                  : Input.value;
             };
+          }
         }
       }
     }
 
     if (validateCallback) {
       if (type === "CHART") {
-        state.currentSong.chart.validState = validateCallback();
-      } else if (validateCallback && state.currentSong) {
-        state.currentSong.validState = validateCallback();
+        getState().currentSong.chart.validState = validateCallback();
+      } else if (validateCallback && getState().currentSong) {
+        getState().currentSong.validState = validateCallback();
       }
     }
   };
@@ -810,70 +824,32 @@ const initializeContributeForm = () => {
     const Ul = Element("ul", "dm-contribute-form__song-list");
     SongListWrapper.appendChild(Ul);
 
-    state.songs.forEach((songStateObject) => {
+    getState().songs.forEach((songStateObject) => {
       const Li = Element(
         "li",
         "dm-song-list-item-wrapper",
         "dm-contribute-form__song-list-item"
       );
-
-      console.log("Curr song i SongList", state.currentSong.title);
-
-      if (state.currentSong === songStateObject) Li.classList.add("selected");
+      console.log(getState().currentSong === songStateObject);
+      if (getState().currentSong === songStateObject)
+        Li.classList.add("selected");
       if (!songStateObject.validState) Li.classList.add("error");
 
       const content = `
-      <div class='l-bold'>${songStateObject.songNumber}</div>
-      <div class='l-bold'>${songStateObject.title}</div>
+        <div class='l-bold'>${songStateObject.songNumber}</div>
+        <div class='l-bold'>${songStateObject.title}</div>
       `;
 
       Li.innerHTML = content;
 
       /* Set clicked song as current song */
       Li.onclick = () => {
-        state.currentSong = songStateObject;
+        getState().currentSong = songStateObject;
 
         renderCallback();
       };
 
       Ul.appendChild(Li);
-    });
-
-    return SongListWrapper;
-  };
-
-  const SongWithChartList = (renderCallback) => {
-    const SongListWrapper = Element("div");
-
-    const SongsUl = Element("ul", "dm-contribute-form__song-list");
-    SongListWrapper.appendChild(SongsUl);
-
-    state.songs.forEach((songStateObject) => {
-      const SongLi = Element(
-        "li",
-        "dm-song-list-item-wrapper",
-        "dm-contribute-form__song-list-item"
-      );
-
-      if (state.currentSong === songStateObject)
-        SongLi.classList.add("selected");
-      if (!songStateObject.validState) SongLi.classList.add("error");
-
-      const content = `
-      <div class='l-bold'>${songStateObject.songNumber}</div>
-      <div class='l-bold'>${songStateObject.title}</div>
-      `;
-
-      SongLi.innerHTML = content;
-
-      /* Set clicked song as current song */
-      SongLi.onclick = () => {
-        state.currentSong = songStateObject;
-
-        renderCallback();
-      };
-
-      SongsUl.appendChild(SongLi);
     });
 
     return SongListWrapper;
@@ -997,7 +973,7 @@ const initializeContributeForm = () => {
     });
 
     patchObjectStateObjectToFormFragment(
-      state.artist,
+      getState().artist,
       Fields.formFields,
       Fields.validate
     );
@@ -1110,7 +1086,7 @@ const initializeContributeForm = () => {
     });
 
     patchObjectStateObjectToFormFragment(
-      state.album,
+      getState().album,
       Fields.formFields,
       Fields.validate
     );
@@ -1137,10 +1113,10 @@ const initializeContributeForm = () => {
     const SongListElementRenderWrapper = Element("div");
 
     const renderCallback = () => {
-      if (state.currentSong !== null) {
+      if (getState().currentSong !== null) {
         Fields.DOMElement.classList.remove("hide");
         patchObjectStateObjectToFormFragment(
-          state.currentSong,
+          getState().currentSong,
           Fields.formFields,
           Fields.validate
         );
@@ -1150,7 +1126,7 @@ const initializeContributeForm = () => {
 
       SongListElementRenderWrapper.innerHTML = "";
 
-      state.songs.sort((a, b) => a.songNumber - b.songNumber);
+      getState().songs.sort((a, b) => a.songNumber - b.songNumber);
 
       SongListElementRenderWrapper.appendChild(SongList(renderCallback));
 
@@ -1309,10 +1285,10 @@ const initializeContributeForm = () => {
     const ChartRenderWrapper = Element("div");
 
     const renderCallback = () => {
-      if (state.currentSong?.chart) {
+      if (getState().currentSong?.chart) {
         Fields.DOMElement.classList.remove("hide");
         patchObjectStateObjectToFormFragment(
-          state.currentSong.chart,
+          getState().currentSong.chart,
           Fields.formFields,
           Fields.validate,
           "CHART"
@@ -1322,13 +1298,13 @@ const initializeContributeForm = () => {
       }
       SongListElementRenderWrapper.innerHTML = "";
 
-      state.songs.sort((a, b) => a.songNumber - b.songNumber);
+      getState().songs.sort((a, b) => a.songNumber - b.songNumber);
 
       SongListElementRenderWrapper.appendChild(SongList(renderCallback, true));
 
       ChartRenderWrapper.innerHTML = "";
 
-      if (state.currentSong)
+      if (getState().currentSong)
         song = newSongObjectFromTemplate(sheetToCp(generateTemplateFromSong()));
 
       try {
@@ -1420,7 +1396,7 @@ const initializeContributeForm = () => {
         SongListElementRenderWrapper.innerHTML = "";
 
         SongListElementRenderWrapper.appendChild(
-          SongWithChartList(renderCallback)
+          SongList(renderCallback, true)
         );
       },
     };
@@ -1534,7 +1510,7 @@ const initializeContributeForm = () => {
     AttatchmentsTabContent.classList.remove("hide");
 
     const tabState = {
-      currentTabIndex: 3,
+      currentTabIndex: 0,
       tabs: [
         {
           index: 0,
@@ -1556,7 +1532,7 @@ const initializeContributeForm = () => {
           DOMContent: songsTabContent.TabWrapper,
           hasValidState: () => {
             let validState = true;
-            state.songs.forEach((song) => {
+            getState().songs.forEach((song) => {
               if (!song.validState) {
                 validState = false;
                 return;
@@ -1572,7 +1548,7 @@ const initializeContributeForm = () => {
           DOMContent: chartsTabContent.TabWrapper,
           hasValidState: () => {
             let validState = true;
-            state.songs.forEach((song) => {
+            getState().songs.forEach((song) => {
               if (!song.chart.validState) {
                 validState = false;
                 return;

@@ -127,8 +127,3 @@
 textarea {
   overflow: auto;
 }
-
-.dm-contribute-form-song-list__vairant-list {
-  display: grid;
-  grid-template-columns: repeat(1fr, 3);
-}
