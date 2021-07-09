@@ -267,7 +267,7 @@ const initializeContributeForm = () => {
     getState().songs.forEach((s) => {
       const row = [];
       row.push(s.title + " - " + s.artist); // "Sangtittel - Artist," +
-      row.push((s.title + " " + s.artist).toLowerCase().replace(/ +/g, "-")); // "Slug," +
+      row.push((s.title + " " + s.artist).toLowerCase().replaceAll(/ +/g, "-")); // "Slug," +
       row.push(s.title); // "Sangtittel," +
       row.push(s.artist); // "Artist(er) - tekst," +
       row.push(album.title); // "Album," +
@@ -287,7 +287,7 @@ const initializeContributeForm = () => {
       row.push(s.chart.key); // "Original toneart," +
       row.push(s.chart.tempo); // "Tempo," +
       row.push(s.chart.time); // "Taktart," +
-      row.push(s.chart.chordProSum.replace("\n", "{(--)}")); // "ChordPro-fil," +
+      row.push(s.chart.chordProSum.replaceAll("\n", "{(--)}")); // "ChordPro-fil," +
       row.push(""); // "Dagens refreng," + // TODO: implement
 
       rows.push(row.join(","));

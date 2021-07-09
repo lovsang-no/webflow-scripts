@@ -356,6 +356,8 @@ const initializeSongPage = (songTemplate) => {
     .forEach((e) => (e.onclick = saveChordPro));
 
   /* U T I L S  */
+
+  /* Apply song query */
   const fetchAndApplySongQuery = () => {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
