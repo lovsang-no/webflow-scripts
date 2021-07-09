@@ -1,0 +1,129 @@
+.dm-form__label.radio {
+  display: inline;
+  margin-left: 1em;
+  font-weight: 300;
+}
+.dm-form__label.radio-title {
+  margin-bottom: 0.3em;
+}
+.dm-form__radio-group {
+  margin-bottom: 1rem;
+}
+
+.dm-contribute-form__song-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.dm-contribute-form__song-list-item {
+  position: relative;
+  list-style: none;
+  padding: 0.5rem 1rem;
+  border: 2px solid #2d2d2d;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+}
+
+.dm-contribute-form__song-list-item:hover {
+  border-color: #383838;
+}
+
+.dm-contribute-form__song-list-item.selected {
+  border-color: #ddd;
+}
+.dm-contribute-form__song-list-item.error::after,
+.dm-contribute-form__song-list-item.error.selected::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: -4px;
+  border: 1px solid #b82929;
+  border-radius: 0.6rem;
+}
+
+.dm-contribute-form__tab-button-wrapper {
+  text-align: center;
+}
+
+.dm-contribute-form__tab-buttons-wrapper {
+  display: flex;
+  margin: 0 -0.5rem;
+  flex-wrap: wrap-reverse;
+  align-items: flex-start;
+}
+
+.dm-contribute-form__tab-button-wrapper > .dm-button {
+  position: relative;
+  border: 3px solid #2d2d2d;
+  margin: 0 0.5rem;
+  margin-top: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.dm-contribute-form__tab-button-wrapper > .dm-button:hover {
+  border-color: #383838;
+}
+
+.dm-contribute-form__tab-button-wrapper > .dm-button.selected {
+  border-color: #ddd;
+}
+
+.dm-contribute-form__tab-button-wrapper > .dm-button.error::after,
+.dm-contribute-form__tab-button-wrapper > .dm-button.error.selected::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: -5px;
+  border: 1px solid #b82929;
+  border-radius: 0.8rem;
+}
+
+.display-none {
+  display: none;
+}
+
+.dm-contribute-form__song-tab-buttons-wrapper {
+  display: flex;
+  margin: 0 -0.5rem;
+  margin-bottom: 1rem;
+}
+
+.dm-contribute-form__song-tab-buttons-wrapper > .dm-button {
+  margin: 0 0.5rem;
+}
+
+.dm-form__input-field.error,
+.dm-form__label.radio.error {
+  border-color: #b82929;
+}
+
+.dm-song-list-item-wrapper.dm-contribute-form__song-list-item:last-child {
+  border-bottom-style: solid;
+}
+
+.dm-contribute-form__detailed-label {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-top: -0.2em;
+  margin-bottom: 0.4em;
+}
+
+.dm-contribute-chart__columns-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+textarea {
+  overflow: auto;
+}
