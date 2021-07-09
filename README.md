@@ -28,3 +28,17 @@ pages
 2. Add `action="/"` on all `<form>`-tags. This is due to the WF form handling.
 
 3. Replace CDN script tag with path to script in parent folder.
+
+## Serve to Webflow
+
+We use JsDelivr to serve content to Webflow. The CDN url follows the convention
+
+```
+https://cdn.jsdelivr.net/gh/user/repo@version/file
+```
+
+which in our case is something like
+
+```
+https://cdn.jsdelivr.net/gh/lovsang-no/webflow-scripts@v1.0.0/{path}{filename}
+```
