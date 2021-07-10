@@ -62,7 +62,6 @@ const initializeSongPage = (songTemplate) => {
     let copyright;
 
     for (let [key, value] of songObject.metadata.extra.entries()) {
-      console.log(key, value);
       switch ((key || "").toUpperCase()) {
         case "ALBUM":
           album = value;
@@ -137,7 +136,7 @@ const initializeSongPage = (songTemplate) => {
 
   const setColumns = (columnCount) => {
     console.log(getState());
-    setState({ ...getState(), columns: columnCount ?? state.coluns });
+    setState({ ...getState(), columns: columnCount ?? getState().columns });
 
     console.log(getState());
     const targetSongBody = target.querySelector(".cp-song-body");
@@ -317,13 +316,12 @@ const initializeSongPage = (songTemplate) => {
   });
 
   /* Copy ChordPro */
-  let copyTimeout;
 
   const getChordProString = () =>
     songObjectToChordPro(song, true, false, true, ["T/M"]);
 
   const copyChordPro = () => {
-    const copyText = document.createElement("input");
+    const copyText = document.createElement("textarea");
     document.body.appendChild(copyText);
     copyText.style.display = "block";
     copyText.value = getChordProString();
@@ -334,15 +332,15 @@ const initializeSongPage = (songTemplate) => {
     copyText.parentNode.removeChild(copyText);
   };
 
-  document.querySelectorAll(".js-copy-chordpro").forEach(
-    (e) =>
-      (e.onclick = () => {
-        copyChordPro();
-        e.innerHTML = "<div>Kopiert!</div>";
-      })
-  );
+  document.querySelectorAll(".js-copy-chordpro").forEach((e) => {
+    e.onclick = () => {
+      copyChordPro();
+      e.innerHTML = "<div>Kopiert!</div>";
+    };
+  });
 
   /* View ChordPro */
+  let viewTimeout;
 
   const handleClickOutsideElement = (element, onClickOutside) => {
     // source (2021-07-09): https://stackoverflow.com/questions/152975/how-do-i-detect-a-click-outside-an-element
@@ -386,8 +384,8 @@ const initializeSongPage = (songTemplate) => {
     chordProDisplayWrapper.appendChild(textarea);
     chordProDisplayWrapper.classList.add("open");
 
-    if (copyTimeout) clearTimeout(copyTimeout);
-    copyTimeout = setTimeout(() => {
+    if (viewTimeout) clearTimeout(viewTimeout);
+    viewTimeout = setTimeout(() => {
       handleClickOutsideElement(textarea, () => {
         chordProDisplayWrapper.classList.remove("open");
       });
