@@ -22,10 +22,6 @@ const getCopyrightObject = (songObject) => {
     }
   }
 
-  if (songObject.metadata.album) album = songObject.metadata.album;
-  if (songObject.metadata.copyright) copyright = songObject.metadata.copyright;
-  if (songObject.metadata.published) published = songObject.metadata.published;
-
   return {
     album,
     published,
@@ -186,7 +182,7 @@ const initializeContributeForm = () => {
 
     const row = [];
     const a = getState().artist;
-    row.push(a.name); // "Navn," +
+    row.push('"' + a.name); // "Navn," +
     row.push(a.name.toLowerCase().replace(/ +/g, "-")); // "Slug," +
     row.push(a.church); // "Tilhørighet," +
     row.push(a.linkWebpage); // "Egen nettside med ressurser," +
@@ -198,9 +194,9 @@ const initializeContributeForm = () => {
     row.push(removeHash(a.linkVimeo)); // "Vimeo," +
     row.push(removeHash(a.linkSpotify)); // "Spotify," +
     row.push(removeHash(a.connectedArtists)); // "Tilknyttet artist," +
-    row.push(removeHash(a.location)); // "Sted,"
+    row.push(removeHash(a.location + '"')); // "Sted,"
 
-    return headings + "\n" + row.join(",");
+    return headings + "\n" + row.join('","');
   };
 
   const albumStateToCSVString = () => {
@@ -219,7 +215,7 @@ const initializeContributeForm = () => {
 
     const row = [];
     const a = getState().album;
-    row.push(a.title + " - " + a.artist); // "Albumtittel - Artist," +
+    row.push('"' + a.title + " - " + a.artist); // "Albumtittel - Artist," +
     row.push((a.title + " " + a.artist).toLowerCase().replace(/ +/g, "-")); // "Slug," +
     row.push(a.title); // "Albumtittel," +
     row.push(a.artist); // "Artist(er) - tekst," +
@@ -228,9 +224,9 @@ const initializeContributeForm = () => {
     row.push(a.label); // "Ansvarlig utgiver," +
     row.push(removeHash(a.linkTracks)); // "Tracks," +
     row.push(removeHash(a.linkAppleMusic)); // "Link til album på iTunes," +
-    row.push(removeHash(a.linkSpotify)); // "Spotify";
+    row.push(removeHash(a.linkSpotify + '"')); // "Spotify";
 
-    return headings + "\n" + row.join(",");
+    return headings + "\n" + row.join('","');
   };
 
   const songsStateToCSVString = () => {
@@ -266,7 +262,7 @@ const initializeContributeForm = () => {
 
     getState().songs.forEach((s) => {
       const row = [];
-      row.push(s.title + " - " + s.artist); // "Sangtittel - Artist," +
+      row.push('"' + s.title + " - " + s.artist); // "Sangtittel - Artist," +
       row.push((s.title + " " + s.artist).toLowerCase().replaceAll(/ +/g, "-")); // "Slug," +
       row.push(s.title); // "Sangtittel," +
       row.push(s.artist); // "Artist(er) - tekst," +
@@ -287,14 +283,13 @@ const initializeContributeForm = () => {
       row.push(s.chart.key); // "Original toneart," +
       row.push(s.chart.tempo); // "Tempo," +
       row.push(s.chart.time); // "Taktart," +
-      row.push(s.chart.chordProSum.replaceAll("\n", "{(--)}")); // "ChordPro-fil," +
-      row.push(""); // "Dagens refreng," + // TODO: implement
+      row.push(s.chart.chordProSum.replaceAll("\n", "{(--)}") + '"'); // "ChordPro-fil," +
+      //row.push(""); // "Dagens refreng," + // TODO: implement
 
-      rows.push(row.join(","));
+      rows.push(row.join('","'));
     });
-
-    console.log("\n" + rows.join(","));
-    return headings + "\n" + rows.join(",");
+    console.log(headings + "\n" + rows.join("\n"));
+    return headings + "\n" + rows.join("\n");
   };
 
   const setWebflowFormValues = () => {
@@ -330,7 +325,7 @@ const initializeContributeForm = () => {
     });
   };
 
-  const Element = (elementType, ...classes) => {
+  const E = (elementType, ...classes) => {
     const DOMElement = document.createElement(elementType);
     for (const c of classes) DOMElement.classList.add(c);
     return DOMElement;
@@ -343,13 +338,13 @@ const initializeContributeForm = () => {
     detailesLabelText,
     required,
   }) => {
-    const Wrapper = Element("div");
+    const Wrapper = E("div");
 
-    const Label = Element("label", "dm-form__label");
+    const Label = E("label", "dm-form__label");
     Label.setAttribute("for", id);
     Label.innerHTML = labelText + (required ? " *" : "");
 
-    const Input = Element("input", "dm-form__input-field");
+    const Input = E("input", "dm-form__input-field");
     Input.id = id;
     Input.name = name;
     Input.required = required ?? false;
@@ -357,10 +352,7 @@ const initializeContributeForm = () => {
     Wrapper.appendChild(Label);
 
     if (detailesLabelText) {
-      const DetailedLabel = Element(
-        "div",
-        "dm-contribute-form__detailed-label"
-      );
+      const DetailedLabel = E("div", "dm-contribute-form__detailed-label");
       DetailedLabel.innerHTML = detailesLabelText;
       Wrapper.appendChild(DetailedLabel);
     }
@@ -377,13 +369,13 @@ const initializeContributeForm = () => {
     detailesLabelText,
     required,
   }) => {
-    const Wrapper = Element("div");
+    const Wrapper = E("div");
 
-    const Label = Element("label", "dm-form__label");
+    const Label = E("label", "dm-form__label");
     Label.setAttribute("for", id);
     Label.innerHTML = labelText + (required ? " *" : "");
 
-    const Input = Element("input", "dm-form__input-field");
+    const Input = E("input", "dm-form__input-field");
     Input.type = "number";
     Input.id = id;
     Input.name = name;
@@ -392,10 +384,7 @@ const initializeContributeForm = () => {
     Wrapper.appendChild(Label);
 
     if (detailesLabelText) {
-      const DetailedLabel = Element(
-        "div",
-        "dm-contribute-form__detailed-label"
-      );
+      const DetailedLabel = E("div", "dm-contribute-form__detailed-label");
       DetailedLabel.innerHTML = detailesLabelText;
       Wrapper.appendChild(DetailedLabel);
     }
@@ -412,13 +401,13 @@ const initializeContributeForm = () => {
     detailesLabelText,
     required,
   }) => {
-    const Wrapper = Element("div");
+    const Wrapper = E("div");
 
-    const Label = Element("label", "dm-form__label");
+    const Label = E("label", "dm-form__label");
     Label.setAttribute("for", id);
     Label.innerHTML = labelText + (required ? " *" : "");
 
-    const Input = Element("input", "dm-form__input-field");
+    const Input = E("input", "dm-form__input-field");
     Input.type = "date";
     Input.id = id;
     Input.name = name;
@@ -427,10 +416,7 @@ const initializeContributeForm = () => {
     Wrapper.appendChild(Label);
 
     if (detailesLabelText) {
-      const DetailedLabel = Element(
-        "div",
-        "dm-contribute-form__detailed-label"
-      );
+      const DetailedLabel = E("div", "dm-contribute-form__detailed-label");
       DetailedLabel.innerHTML = detailesLabelText;
       Wrapper.appendChild(DetailedLabel);
     }
@@ -447,13 +433,13 @@ const initializeContributeForm = () => {
     detailesLabelText,
     required,
   }) => {
-    const Wrapper = Element("div");
+    const Wrapper = E("div");
 
-    const Label = Element("label", "dm-form__label", "radio");
+    const Label = E("label", "dm-form__label", "radio");
     Label.setAttribute("for", id);
     Label.innerHTML = labelText;
 
-    const RadioInput = Element("input");
+    const RadioInput = E("input");
     RadioInput.type = "radio";
     RadioInput.id = id;
     RadioInput.value = labelText;
@@ -463,10 +449,7 @@ const initializeContributeForm = () => {
     Wrapper.appendChild(RadioInput);
 
     if (detailesLabelText) {
-      const DetailedLabel = Element(
-        "div",
-        "dm-contribute-form__detailed-label"
-      );
+      const DetailedLabel = E("div", "dm-contribute-form__detailed-label");
       DetailedLabel.innerHTML = detailesLabelText;
       Wrapper.appendChild(DetailedLabel);
     }
@@ -484,16 +467,13 @@ const initializeContributeForm = () => {
     required,
     radioObjectList,
   }) => {
-    const Wrapper = Element("div", "dm-form__radio-group");
-    const LabelText = Element("div", "dm-form__label", "radio-title");
+    const Wrapper = E("div", "dm-form__radio-group");
+    const LabelText = E("div", "dm-form__label", "radio-title");
     LabelText.innerHTML = labelText + (required ? " *" : "");
     Wrapper.appendChild(LabelText);
 
     if (detailesLabelText) {
-      const DetailedLabel = Element(
-        "div",
-        "dm-contribute-form__detailed-label"
-      );
+      const DetailedLabel = E("div", "dm-contribute-form__detailed-label");
       DetailedLabel.innerHTML = detailesLabelText;
       Wrapper.appendChild(DetailedLabel);
     }
@@ -512,33 +492,23 @@ const initializeContributeForm = () => {
     return Wrapper;
   };
 
-  const ChoiseInputWithLabel = ({
-    name,
-    id,
-    labelText,
-    detailesLabelText,
-    required,
-  }) => {
-    const Wrapper = Element("div");
+  const ChoiseInputWithLabel = ({ name, id, labelText, detailesLabelText }) => {
+    const Wrapper = E("div");
 
-    const Label = Element("label", "dm-form__label", "radio");
+    const Label = E("label", "dm-form__label", "radio");
     Label.setAttribute("for", id);
     Label.innerHTML = labelText;
 
-    const RadioInput = Element("input");
+    const RadioInput = E("input");
     RadioInput.type = "checkbox";
     RadioInput.id = id;
     RadioInput.value = labelText;
     RadioInput.name = name;
-    RadioInput.required = required ?? false;
 
     Wrapper.appendChild(RadioInput);
 
     if (detailesLabelText) {
-      const DetailedLabel = Element(
-        "div",
-        "dm-contribute-form__detailed-label"
-      );
+      const DetailedLabel = E("div", "dm-contribute-form__detailed-label");
       DetailedLabel.innerHTML = detailesLabelText;
       Wrapper.appendChild(DetailedLabel);
     }
@@ -556,16 +526,14 @@ const initializeContributeForm = () => {
     required,
     radioObjectList,
   }) => {
-    const Wrapper = Element("div", "dm-form__radio-group");
-    const LabelText = Element("div", "dm-form__label", "radio-title");
+    const Wrapper = E("div", "dm-form__radio-group");
+    if (required) Wrapper.classList.add("required");
+    const LabelText = E("div", "dm-form__label", "radio-title");
     LabelText.innerHTML = labelText + (required ? " *" : "");
     Wrapper.appendChild(LabelText);
 
     if (detailesLabelText) {
-      const DetailedLabel = Element(
-        "div",
-        "dm-contribute-form__detailed-label"
-      );
+      const DetailedLabel = E("div", "dm-contribute-form__detailed-label");
       DetailedLabel.innerHTML = detailesLabelText;
       Wrapper.appendChild(DetailedLabel);
     }
@@ -592,13 +560,13 @@ const initializeContributeForm = () => {
     rowsHight,
     required,
   }) => {
-    const Wrapper = Element("div");
+    const Wrapper = E("div");
 
-    const Label = Element("label", "dm-form__label");
+    const Label = E("label", "dm-form__label");
     Label.setAttribute("for", id);
     Label.innerHTML = labelText + (required ? " *" : "");
 
-    const Textarea = Element("textarea", "dm-form__input-field", "textarea");
+    const Textarea = E("textarea", "dm-form__input-field", "textarea");
     Textarea.id = id;
     Textarea.name = name;
     Textarea.style.minHeight = (rowsHight ?? 6) + "em";
@@ -612,10 +580,7 @@ const initializeContributeForm = () => {
     Wrapper.appendChild(Label);
 
     if (detailesLabelText) {
-      const DetailedLabel = Element(
-        "div",
-        "dm-contribute-form__detailed-label"
-      );
+      const DetailedLabel = E("div", "dm-contribute-form__detailed-label");
       DetailedLabel.innerHTML = detailesLabelText;
       Wrapper.appendChild(DetailedLabel);
     }
@@ -628,7 +593,7 @@ const initializeContributeForm = () => {
   const FormFieldsFromObject = ({ formFields, renderCallback }) => {
     const idPre = "s";
 
-    const SongWrapper = Element("div");
+    const SongWrapper = E("div");
 
     for (const [key, songFieldObject] of Object.entries(formFields)) {
       const elementInfo = {
@@ -680,6 +645,14 @@ const initializeContributeForm = () => {
           console.error('inputType not set for "' + key + '"');
       }
 
+      if (songFieldObject.classes)
+        for (const c of songFieldObject.classes) {
+          Element.querySelectorAll("input").forEach((e) => e.classList.add(c));
+          Element.querySelectorAll("textarea").forEach((e) =>
+            e.classList.add(c)
+          );
+        }
+
       if (songFieldObject.reRenderSongList || songFieldObject.required) {
         Element.addEventListener(
           songFieldObject.triggerOnInput ? "input" : "change",
@@ -712,22 +685,60 @@ const initializeContributeForm = () => {
       let hasValidState = true;
       for (const [key, songFieldObject] of Object.entries(formFields)) {
         if (
-          songFieldObject.required &&
-          songFieldObject.DOMElement.querySelector(
-            songFieldObject === TEXTAREA ? "textarea" : "input"
-          ) &&
-          !songFieldObject.DOMElement.querySelector(
-            songFieldObject === TEXTAREA ? "textarea" : "input"
-          )?.value?.trim()?.length
+          songFieldObject.inputType === MULTIPLE_CHOISE &&
+          songFieldObject.required
         ) {
-          hasValidState = false;
-          songFieldObject.DOMElement.querySelectorAll("input").forEach((i) =>
-            i.classList?.add("error")
-          );
+          const checkedInputCount =
+            songFieldObject.DOMElement.querySelectorAll("input:checked").length;
+
+          if (
+            !checkedInputCount ||
+            (songFieldObject.maxChecked &&
+              songFieldObject.maxChecked < checkedInputCount)
+          ) {
+            hasValidState = false;
+            songFieldObject.DOMElement.classList?.add("error");
+          } else {
+            songFieldObject.DOMElement.classList?.remove("error");
+          }
+        } else if (
+          songFieldObject.inputType === RADIO &&
+          songFieldObject.required
+        ) {
+          const checkedInputCount =
+            songFieldObject.DOMElement.querySelectorAll("input:checked").length;
+
+          if (!checkedInputCount) {
+            hasValidState = false;
+            songFieldObject.DOMElement.classList?.add("error");
+          } else {
+            songFieldObject.DOMElement.classList?.remove("error");
+          }
         } else {
-          songFieldObject.DOMElement.querySelectorAll("input").forEach((i) =>
-            i.classList?.remove("error")
-          );
+          if (
+            songFieldObject.required &&
+            songFieldObject.DOMElement.querySelector(
+              songFieldObject === TEXTAREA ? "textarea" : "input"
+            ) &&
+            !songFieldObject.DOMElement.querySelector(
+              songFieldObject === TEXTAREA ? "textarea" : "input"
+            )?.value?.trim()?.length
+          ) {
+            hasValidState = false;
+            songFieldObject.DOMElement.querySelectorAll("input").forEach((i) =>
+              i.classList?.add("error")
+            );
+            songFieldObject.DOMElement.querySelectorAll("textarea").forEach(
+              (i) => i.classList?.add("error")
+            );
+          } else {
+            songFieldObject.DOMElement.querySelectorAll("input").forEach((i) =>
+              i.classList?.remove("error")
+            );
+            songFieldObject.DOMElement.querySelectorAll("textarea").forEach(
+              (i) => i.classList?.remove("error")
+            );
+          }
         }
       }
 
@@ -926,33 +937,33 @@ Intro:
   };
 
   const SongList = (renderCallback, hideControls = false) => {
-    const SongListWrapper = Element("div");
+    const SongListWrapper = E("div");
 
-    const ButtonWrapper = Element(
+    const ButtonWrapper = E(
       "div",
       "dm-contribute-form__song-tab-buttons-wrapper"
     );
     if (!hideControls) SongListWrapper.appendChild(ButtonWrapper);
 
-    const NewSongButton = Element("a", "dm-button");
+    const NewSongButton = E("a", "dm-button");
     NewSongButton.innerHTML = "+ legg til sang";
     NewSongButton.onclick = () => {
       newSong(renderCallback);
     };
     ButtonWrapper.appendChild(NewSongButton);
 
-    const DeleteSongButton = Element("a", "dm-button");
+    const DeleteSongButton = E("a", "dm-button");
     DeleteSongButton.innerHTML = "- slett sang";
     DeleteSongButton.onclick = () => {
       deleteSong(renderCallback);
     };
     ButtonWrapper.appendChild(DeleteSongButton);
 
-    const Ul = Element("ul", "dm-contribute-form__song-list");
+    const Ul = E("ul", "dm-contribute-form__song-list");
     SongListWrapper.appendChild(Ul);
 
     getState().songs.forEach((songStateObject) => {
-      const Li = Element(
+      const Li = E(
         "li",
         "dm-song-list-item-wrapper",
         "dm-contribute-form__song-list-item"
@@ -987,7 +998,10 @@ Intro:
 
     const setTabRenderCallback = (callback) => (tabRenderCallback = callback);
 
-    const TabWrapper = Element("div");
+    const TabWrapper = E("form");
+    TabWrapper.id = "cf-artist-form";
+    TabWrapper.name = "cf-artist-form";
+    TabWrapper.action = "/";
 
     const renderCallback = () => {
       Fields.validate();
@@ -1121,7 +1135,10 @@ Intro:
 
     const setTabRenderCallback = (callback) => (tabRenderCallback = callback);
 
-    const TabWrapper = Element("div");
+    const TabWrapper = E("form");
+    TabWrapper.id = "cf-album-form";
+    TabWrapper.name = "cf-album-form";
+    TabWrapper.action = "/";
 
     const renderCallback = () => {
       Fields.validate();
@@ -1234,10 +1251,13 @@ Intro:
 
     const setTabRenderCallback = (callback) => (tabRenderCallback = callback);
 
-    const TabWrapper = Element("div");
+    const TabWrapper = E("form");
+    TabWrapper.id = "cf-songs-form";
+    TabWrapper.name = "cf-songs-form";
+    TabWrapper.action = "/";
 
     /* Rerender start */
-    const SongListElementRenderWrapper = Element("div");
+    const SongListElementRenderWrapper = E("div");
 
     const renderCallback = () => {
       if (getState().currentSong !== null) {
@@ -1309,6 +1329,7 @@ Intro:
         inputType: MULTIPLE_CHOISE,
         required: true,
         DOMElement: null,
+        maxChecked: 4,
         choiseObjectList: [
           { value: "GudsNærvær", labelText: "Guds nærvær" },
           { value: "Identitet", labelText: "Identitet" },
@@ -1414,11 +1435,14 @@ Intro:
     let song = undefined;
     const setTabRenderCallback = (callback) => (tabRenderCallback = callback);
 
-    const TabWrapper = Element("div");
+    const TabWrapper = E("form");
+    TabWrapper.id = "cf-charts-form";
+    TabWrapper.name = "cf-charts-form";
+    TabWrapper.action = "/";
 
     /* Rerender start */
-    const SongListElementRenderWrapper = Element("div");
-    const ChartRenderWrapper = Element("div");
+    const SongListElementRenderWrapper = E("div");
+    const ChartRenderWrapper = E("div");
 
     const renderCallback = () => {
       if (getState().currentSong?.chart) {
@@ -1458,9 +1482,9 @@ Intro:
     SongListElementRenderWrapper.appendChild(SongList(renderCallback, true));
 
     TabWrapper.appendChild(SongListElementRenderWrapper);
-    const ColumnsGrid = Element("div", "dm-contribute-chart__columns-wrapper");
-    const LeftColumn = Element("div");
-    const RightColumn = Element("div", "dm-content-box");
+    const ColumnsGrid = E("div", "dm-contribute-chart__columns-wrapper");
+    const LeftColumn = E("div");
+    const RightColumn = E("div", "dm-content-box");
     RightColumn.appendChild(ChartRenderWrapper);
     ColumnsGrid.appendChild(LeftColumn);
     ColumnsGrid.appendChild(RightColumn);
@@ -1513,6 +1537,7 @@ Intro:
         reRenderSongList: true,
         triggerOnInput: true,
         textareaRows: 20,
+        classes: ["monofont"],
       },
     };
 
@@ -1540,59 +1565,59 @@ Intro:
   };
 
   const Tabs = () => {
-    const TabsWrapper = Element("div");
-    const TabButtonsWrapper = Element(
+    const TabsWrapper = E("div");
+    const TabButtonsWrapper = E(
       "div",
       "dm-contribute-form__tab-buttons-wrapper"
     );
     TabsWrapper.appendChild(TabButtonsWrapper);
 
-    const ArtistTabButtonWrapper = Element(
+    const ArtistTabButtonWrapper = E(
       "div",
       "dm-contribute-form__tab-button-wrapper"
     );
     ArtistTabButtonWrapper.innerHTML = "Steg 1";
-    const ArtistTabButton = Element("button", "dm-button");
+    const ArtistTabButton = E("button", "dm-button");
     ArtistTabButton.innerHTML = "Artist";
     ArtistTabButtonWrapper.appendChild(ArtistTabButton);
     TabButtonsWrapper.appendChild(ArtistTabButtonWrapper);
 
-    const AlbumTabButtonWrapper = Element(
+    const AlbumTabButtonWrapper = E(
       "div",
       "dm-contribute-form__tab-button-wrapper"
     );
     AlbumTabButtonWrapper.innerHTML = "Steg 2";
-    const AlbumTabButton = Element("button", "dm-button");
+    const AlbumTabButton = E("button", "dm-button");
     AlbumTabButton.innerHTML = "Album";
     AlbumTabButtonWrapper.appendChild(AlbumTabButton);
     TabButtonsWrapper.appendChild(AlbumTabButtonWrapper);
 
-    const SongsTabButtonWrapper = Element(
+    const SongsTabButtonWrapper = E(
       "div",
       "dm-contribute-form__tab-button-wrapper"
     );
     SongsTabButtonWrapper.innerHTML = "Steg 3";
-    const SongsTabButton = Element("button", "dm-button");
+    const SongsTabButton = E("button", "dm-button");
     SongsTabButton.innerHTML = "Sanger";
     SongsTabButtonWrapper.appendChild(SongsTabButton);
     TabButtonsWrapper.appendChild(SongsTabButtonWrapper);
 
-    const ChartsTabButtonWrapper = Element(
+    const ChartsTabButtonWrapper = E(
       "div",
       "dm-contribute-form__tab-button-wrapper"
     );
     ChartsTabButtonWrapper.innerHTML = "Steg 4";
-    const ChartTabButton = Element("button", "dm-button");
+    const ChartTabButton = E("button", "dm-button");
     ChartTabButton.innerHTML = "Blekker";
     ChartsTabButtonWrapper.appendChild(ChartTabButton);
     TabButtonsWrapper.appendChild(ChartsTabButtonWrapper);
 
-    const AttatchmentsTabButtonWrapper = Element(
+    const AttatchmentsTabButtonWrapper = E(
       "div",
       "dm-contribute-form__tab-button-wrapper"
     );
     AttatchmentsTabButtonWrapper.innerHTML = "Steg 5";
-    const AttatchmentsTabButton = Element("button", "dm-button");
+    const AttatchmentsTabButton = E("button", "dm-button");
     AttatchmentsTabButton.innerHTML = "Vedlegg og fullfør";
     AttatchmentsTabButton.addEventListener("click", () => {
       setWebflowFormValues();
@@ -1601,7 +1626,7 @@ Intro:
     AttatchmentsTabButtonWrapper.appendChild(AttatchmentsTabButton);
     TabButtonsWrapper.appendChild(AttatchmentsTabButtonWrapper);
 
-    const RightButtonWraper = Element(
+    const RightButtonWraper = E(
       "div",
       "dm-contribute-form__tab-buttons-wrapper",
       "dm-contribute-form__tab-button-wrapper"
@@ -1610,7 +1635,7 @@ Intro:
     RightButtonWraper.style.marginLeft = "auto";
     TabButtonsWrapper.appendChild(RightButtonWraper);
 
-    const ClearAllDataButton = Element("button", "dm-button");
+    const ClearAllDataButton = E("button", "dm-button");
     RightButtonWraper.appendChild(ClearAllDataButton);
     ClearAllDataButton.innerHTML = "Nullstill skjema";
     ClearAllDataButton.onclick = () => {
@@ -1626,7 +1651,7 @@ Intro:
       }
     };
 
-    const TabContentWrapper = Element(
+    const TabContentWrapper = E(
       "div",
       "dm-contribute-form__tab-content-wrapper"
     );
@@ -1769,10 +1794,7 @@ Intro:
   };
 
   const Form = () => {
-    const Form = Element("form");
-    Form.id = "contribution-form-helper";
-    Form.name = "contribution-form-helper";
-    Form.action = "/";
+    const Form = E("div");
 
     const Content = Tabs();
 

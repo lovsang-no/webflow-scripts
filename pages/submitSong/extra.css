@@ -109,9 +109,30 @@
   margin: 0 0.5rem;
 }
 
-.dm-form__input-field.error,
-.dm-form__label.radio.error {
+.dm-form__input-field.error {
   border-color: #b82929;
+}
+.dm-form__radio-group.error {
+  position: relative;
+  z-index: 1;
+}
+
+.dm-form__radio-group.error::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: -5px;
+  border: 1px solid #b82929;
+  border-radius: 0.8rem;
+  z-index: -1;
+}
+
+.dm-form__radio-group input,
+.dm-form__radio-group label {
+  cursor: pointer;
 }
 
 .dm-song-list-item-wrapper.dm-contribute-form__song-list-item:last-child {
