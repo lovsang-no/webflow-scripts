@@ -135,10 +135,7 @@ const initializeSongPage = (songTemplate) => {
   const setState = (newState) => (state[0] = newState);
 
   const setColumns = (columnCount) => {
-    console.log(getState());
     setState({ ...getState(), columns: columnCount ?? getState().columns });
-
-    console.log(getState());
     const targetSongBody = target.querySelector(".cp-song-body");
     targetSongBody.style.columns = 1;
     if (columnCount !== 1)

@@ -75,6 +75,13 @@
   border-color: #ddd;
 }
 
+.dm-contribute-form__tab-button-wrapper > .dm-button:disabled {
+  background-color: #333;
+  border-color: #333;
+  color: #888;
+  cursor: not-allowed;
+}
+
 .dm-contribute-form__tab-button-wrapper > .dm-button.error::after,
 .dm-contribute-form__tab-button-wrapper > .dm-button.error.selected::after {
   content: "";
@@ -126,4 +133,81 @@
 
 textarea {
   overflow: auto;
+}
+
+.cp-song-title {
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 0px;
+}
+
+.cp-song-artist {
+  font-size: 1.4rem;
+  padding-bottom: 0.5rem;
+}
+
+.cp-heading {
+  font-weight: bold;
+}
+
+.cp-section {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  margin: 1px;
+}
+
+.cp-meta-wrapper {
+  position: relative;
+}
+
+.cp-key-tempo-wrapper {
+  position: absolute;
+  top: 0.4rem;
+  right: 2.6rem;
+  font-size: 1.4rem;
+}
+
+.chord-pro-preview.open > * {
+  max-width: 40rem;
+  background-color: #222;
+  height: 80%;
+}
+
+.monofont {
+  font-family: "Courier New", Courier, monospace;
+}
+table,
+tbody,
+tr,
+td {
+  padding: 0;
+  margin: 0;
+}
+
+td {
+  line-height: 1.2;
+  margin-bottom: 0.8em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  display: inline-block;
+}
+
+.cp-heading {
+  font-weight: bold;
+}
+
+.cp-chord {
+  font-weight: 600;
+}
+
+.cp-copyright-wrapper {
+  font-size: 0.7em;
+  font-weight: 600;
 }

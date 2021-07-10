@@ -601,12 +601,12 @@ const initializeContributeForm = () => {
     const Textarea = Element("textarea", "dm-form__input-field", "textarea");
     Textarea.id = id;
     Textarea.name = name;
-    Textarea.style.minHeight = rowsHight ?? 6 + "em";
+    Textarea.style.minHeight = (rowsHight ?? 6) + "em";
     Textarea.required = required ?? false;
 
     Textarea.addEventListener("input", () => {
-      Textarea.style.height = "5px";
-      Textarea.style.height = Textarea.scrollHeight + "px";
+      Textarea.style.height = "10px";
+      Textarea.style.height = Textarea.scrollHeight + 20 + "px";
     });
 
     Wrapper.appendChild(Label);
@@ -647,7 +647,11 @@ const initializeContributeForm = () => {
           SongWrapper.appendChild(Element);
           break;
         case TEXTAREA:
-          Element = TextareaWithLabel({ ...elementInfo, rowsHight: 5 });
+          console.log(songFieldObject);
+          Element = TextareaWithLabel({
+            ...elementInfo,
+            rowsHight: songFieldObject.textareaRows,
+          });
           SongWrapper.appendChild(Element);
           break;
         case DATE:
@@ -729,6 +733,28 @@ const initializeContributeForm = () => {
 
       return hasValidState;
     };
+    /*  TODO: Implement 
+    Object.entries(formFields).forEach(([key, songFieldObject], index) => {
+      if (songFieldObject?.DOMElement?.querySelectorAll("input"))
+        songFieldObject.DOMElement.querySelectorAll("input").forEach((el) => {
+          el.addEventListener("keydown", (e) => {
+            if (e.keyCode === 13) e.preventDefault();
+            if (index < Object.entries(formFields).length - 1) {
+              if (Object.entries(formFields)[index + 1].DOMElement)
+                Object.entries(formFields)
+                  [index + 1].DOMElement.querySelector("input")
+                  .select();
+
+              console.log(
+                "aell",
+                Object.entries(formFields)
+                  [index + 1][1].DOMElement?.querySelector("input")
+                  ?.select()
+              );
+            }
+          });
+        });
+    }); */
 
     return {
       DOMElement: SongWrapper,
@@ -765,7 +791,18 @@ const initializeContributeForm = () => {
         tempo: "",
         time: "",
         copyright: "",
-        chordProBody: "",
+        chordProBody: `Vers 1:
+E           A        
+Dette er et eksempel på en sang.
+[B]Du kan skrive inn a[Dsus4]kkordene 
+både i klammeparantes i teksten og over.
+Både [H]H og [B]B kan brukes.
+
+Slik skriver du instrumentaler
+
+Intro:
+| A . . . | B . . E/G# | (x2)
+`,
         chordProSum: "",
       },
     };
@@ -1469,12 +1506,13 @@ const initializeContributeForm = () => {
       },
       chordProBody: {
         labelText: "Sang",
-        detailesLabelText: null,
+        detailesLabelText: "Her skriver du inn tekst og akkorder.",
         inputType: TEXTAREA,
         required: true,
         DOMElement: null,
         reRenderSongList: true,
         triggerOnInput: true,
+        textareaRows: 20,
       },
     };
 
@@ -1514,7 +1552,7 @@ const initializeContributeForm = () => {
       "dm-contribute-form__tab-button-wrapper"
     );
     ArtistTabButtonWrapper.innerHTML = "Steg 1";
-    const ArtistTabButton = Element("a", "dm-button");
+    const ArtistTabButton = Element("button", "dm-button");
     ArtistTabButton.innerHTML = "Artist";
     ArtistTabButtonWrapper.appendChild(ArtistTabButton);
     TabButtonsWrapper.appendChild(ArtistTabButtonWrapper);
@@ -1524,7 +1562,7 @@ const initializeContributeForm = () => {
       "dm-contribute-form__tab-button-wrapper"
     );
     AlbumTabButtonWrapper.innerHTML = "Steg 2";
-    const AlbumTabButton = Element("a", "dm-button");
+    const AlbumTabButton = Element("button", "dm-button");
     AlbumTabButton.innerHTML = "Album";
     AlbumTabButtonWrapper.appendChild(AlbumTabButton);
     TabButtonsWrapper.appendChild(AlbumTabButtonWrapper);
@@ -1534,7 +1572,7 @@ const initializeContributeForm = () => {
       "dm-contribute-form__tab-button-wrapper"
     );
     SongsTabButtonWrapper.innerHTML = "Steg 3";
-    const SongsTabButton = Element("a", "dm-button");
+    const SongsTabButton = Element("button", "dm-button");
     SongsTabButton.innerHTML = "Sanger";
     SongsTabButtonWrapper.appendChild(SongsTabButton);
     TabButtonsWrapper.appendChild(SongsTabButtonWrapper);
@@ -1544,7 +1582,7 @@ const initializeContributeForm = () => {
       "dm-contribute-form__tab-button-wrapper"
     );
     ChartsTabButtonWrapper.innerHTML = "Steg 4";
-    const ChartTabButton = Element("a", "dm-button");
+    const ChartTabButton = Element("button", "dm-button");
     ChartTabButton.innerHTML = "Blekker";
     ChartsTabButtonWrapper.appendChild(ChartTabButton);
     TabButtonsWrapper.appendChild(ChartsTabButtonWrapper);
@@ -1554,7 +1592,7 @@ const initializeContributeForm = () => {
       "dm-contribute-form__tab-button-wrapper"
     );
     AttatchmentsTabButtonWrapper.innerHTML = "Steg 5";
-    const AttatchmentsTabButton = Element("a", "dm-button");
+    const AttatchmentsTabButton = Element("button", "dm-button");
     AttatchmentsTabButton.innerHTML = "Vedlegg og fullfør";
     AttatchmentsTabButton.addEventListener("click", () => {
       setWebflowFormValues();
@@ -1572,7 +1610,7 @@ const initializeContributeForm = () => {
     RightButtonWraper.style.marginLeft = "auto";
     TabButtonsWrapper.appendChild(RightButtonWraper);
 
-    const ClearAllDataButton = Element("a", "dm-button");
+    const ClearAllDataButton = Element("button", "dm-button");
     RightButtonWraper.appendChild(ClearAllDataButton);
     ClearAllDataButton.innerHTML = "Nullstill skjema";
     ClearAllDataButton.onclick = () => {
@@ -1610,6 +1648,7 @@ const initializeContributeForm = () => {
 
     const tabState = {
       currentTabIndex: 0,
+      validStatesArray: [false, false, false, false, false],
       tabs: [
         {
           index: 0,
@@ -1631,6 +1670,7 @@ const initializeContributeForm = () => {
           DOMContent: songsTabContent.TabWrapper,
           hasValidState: () => {
             let validState = true;
+            if (!getState().songs.length) return false;
             getState().songs.forEach((song) => {
               if (!song.validState) {
                 validState = false;
@@ -1669,18 +1709,41 @@ const initializeContributeForm = () => {
 
     const renderState = () => {
       tabState.tabs.forEach((tab) => {
+        // Disable tabs after not valid tab
+        if (tab.hasValidState && tab.hasValidState()) {
+          tab.DOMButton.classList.remove("error");
+          tabState.validStatesArray[tab.index] = true;
+        } else {
+          tab.DOMButton.classList.add("error");
+          tabState.validStatesArray[tab.index] = false;
+        }
+
         if (tab.index === tabState.currentTabIndex) {
           tab.DOMButton.classList.add("selected");
           tab.DOMContent.classList.remove("display-none");
           if (tab.hasValidState && tab.hasValidState()) {
             tab.DOMButton.classList.remove("error");
+            tabState.validStatesArray[tab.index] = true;
           } else {
             tab.DOMButton.classList.add("error");
+            tabState.validStatesArray[tab.index] = false;
           }
         } else {
+          console.log(tab.DOMButton, tabState.validStatesArray);
+          if (
+            tabState.validStatesArray.indexOf(false) !== -1 &&
+            tabState.validStatesArray.indexOf(false) < tab.index
+          ) {
+            tab.DOMButton.disabled = true;
+          } else {
+            tab.DOMButton.disabled = false;
+          }
           tab.DOMButton.classList.remove("selected");
           tab.DOMContent.classList.add("display-none");
-          if (tab.hasValidState && tab.hasValidState()) {
+          if (
+            (tab.hasValidState && tab.hasValidState()) ||
+            tabState.validStatesArray.indexOf(false) < tab.index
+          ) {
             tab.DOMButton.classList.remove("error");
           } else {
             tab.DOMButton.classList.add("error");
