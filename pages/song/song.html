@@ -8,6 +8,12 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../css/fonts.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../css/webflow.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="extra.css" />
+    <style>
+      .hide {
+        display: none;
+      }
+
+    </style>
   </head>
   <body class="dm-body">
     <div id="print-content" class="print-content">
@@ -260,7 +266,8 @@
               </div>
               <div class="dm-1-5-1-col-grid">
                 <div class="div-block-93">
-                  <div id="js-chart-wrapper" class="chord-display-wrapper">
+                  <div id="js-chord-pro-display-wrapper" class="chord-pro-preview hide"></div>
+                  <div id="js-chart-wrapper" class="chord-display-wrapper"> 
                     <div class="dm-song-page__song-settings-wrapper">
                       <div id="js-cart-normal-settings" class="dm-sp-chart-settings-wrapper">
                         <div data-hover="" data-delay="0" class="dm-sp-dd-main-wrapper w-dropdown">
@@ -319,14 +326,14 @@
                                     </svg></div>
                                 </div>
                               </div>
-                              <div class="dm-sp-button-group-flex hide">
+                              <div class="dm-sp-button-group-flex ">
                                 <div class="dm-sp-dd-button-group-description">Capo:</div>
-                                <div class="dm-sp-dd-list-item button-group-item up-down">
+                                <div id="capo-up"class="dm-sp-dd-list-item button-group-item up-down">
                                   <div class="dm-dd-caret-option-wrapper up w-embed"><svg aria-hidden="true" height="100%" focusable="false" data-prefix="fas" data-icon="chevron-up" class="svg-inline--fa fa-chevron-up fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                       <path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path>
                                     </svg></div>
                                 </div>
-                                <div class="dm-sp-dd-list-item button-group-item up-down">
+                                <div id="capo-down" class="dm-sp-dd-list-item button-group-item up-down">
                                   <div class="dm-dd-caret-option-wrapper w-embed"><svg aria-hidden="true" height="100%" focusable="false" data-prefix="fas" data-icon="chevron-up" class="svg-inline--fa fa-chevron-up fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                       <path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path>
                                     </svg></div>
@@ -393,12 +400,12 @@
                                 </div>
                                 <div class="dm-sp-button-group-flex border-left hide">
                                   <div class="dm-sp-dd-button-group-description no-bottom-border">Capo:</div>
-                                  <div class="dm-sp-dd-list-item button-group-item up-down no-bottom-border">
+                                  <div id="fs-capo-up" class="dm-sp-dd-list-item button-group-item up-down no-bottom-border">
                                     <div class="dm-dd-caret-option-wrapper up w-embed"><svg aria-hidden="true" height="100%" focusable="false" data-prefix="fas" data-icon="chevron-up" class="svg-inline--fa fa-chevron-up fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                         <path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path>
                                       </svg></div>
                                   </div>
-                                  <div class="dm-sp-dd-list-item button-group-item up-down no-bottom-border">
+                                  <div id="fs-capo-down" class="dm-sp-dd-list-item button-group-item up-down no-bottom-border">
                                     <div class="dm-dd-caret-option-wrapper w-embed"><svg aria-hidden="true" height="100%" focusable="false" data-prefix="fas" data-icon="chevron-up" class="svg-inline--fa fa-chevron-up fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                         <path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path>
                                       </svg></div>
@@ -479,77 +486,7 @@
                       </div>
                     </div>
                     <div class="dm-content-box">
-                      <p id="cp-target" class="dm-rendering-target"><div class="cp-meta-wrapper"><div class="cp-song-title">Vekk meg opp</div>
-<div class="cp-song-artist">Impuls</div>
-<div class="">Toneart: F#</div>
-<div class="">128 BPM 4/4</div>
-<div class="">Album: Vekk meg opp</div>
-<div class="">Published: 2021</div>
-<div class="">Copyright: Impuls</div>
-<div class="">T/m: Sindre Suphellen, Jenny Sofia Bruns, Julia Bruns</div>
-<div class="">Web: impulsweb.no</div></div><br>
-<div class=""><div class="cp-section"><div class="cp-heading">Vers 1:</div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><span class="cp-chord">B</span>&nbsp;&nbsp;<br>Jeg&nbsp;finner&nbsp;trygghet&nbsp;i&nbsp;</td>
-<td class=""><span class="cp-chord">D#m</span>&nbsp;&nbsp;<br>ditt&nbsp;ord</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>Det&nbsp;vil&nbsp;stå&nbsp;</td>
-<td class=""><span class="cp-chord">C#</span>&nbsp;&nbsp;<br>fast&nbsp;til&nbsp;evig&nbsp;tid</td>
-<td class=""><span class="cp-chord">B</span>&nbsp;&nbsp;<br>&nbsp;</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><br>Det&nbsp;forteller&nbsp;</td>
-<td class=""><span class="cp-chord">D#m</span>&nbsp;&nbsp;<br>om&nbsp;en&nbsp;nåde&nbsp;stor</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>Og&nbsp;gir&nbsp;håp&nbsp;om&nbsp;</td>
-<td class=""><span class="cp-chord">C#</span>&nbsp;&nbsp;<br>evig&nbsp;liv</td></tr></tbody></table></div></div><br>
-<div class="cp-section"><div class="cp-heading">Vers 2:</div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><span class="cp-chord">B</span>&nbsp;&nbsp;<br>Jeg&nbsp;vet&nbsp;du&nbsp;</td>
-<td class=""><span class="cp-chord">D#m</span>&nbsp;&nbsp;<br>har&nbsp;all&nbsp;makt</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>At&nbsp;du&nbsp;skapte&nbsp;</td>
-<td class=""><span class="cp-chord">C#</span>&nbsp;&nbsp;<br>alt&nbsp;på&nbsp;denne&nbsp;jord</td>
-<td class=""><span class="cp-chord">B</span>&nbsp;&nbsp;<br>&nbsp;</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><br>Og&nbsp;jeg&nbsp;vet&nbsp;at&nbsp;</td>
-<td class=""><span class="cp-chord">D#m</span>&nbsp;&nbsp;<br>du&nbsp;har&nbsp;sagt</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>Gå&nbsp;til&nbsp;dem&nbsp;som&nbsp;</td>
-<td class=""><span class="cp-chord">C#</span>&nbsp;&nbsp;<br>ikke&nbsp;tror</td></tr></tbody></table></div></div><br>
-<div class="cp-section"><div class="cp-heading">Pre-Chorus:</div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><br>Men&nbsp;hvordan&nbsp;kan&nbsp;de&nbsp;</td>
-<td class=""><span class="cp-chord">B</span>&nbsp;&nbsp;<br>høre&nbsp;</td>
-<td class=""><span class="cp-chord">D#m</span>&nbsp;&nbsp;<br>&nbsp;</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><br>Hvordan&nbsp;kan&nbsp;de</td>
-<td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>&nbsp;tro&nbsp;</td>
-<td class=""><span class="cp-chord">C#</span>&nbsp;&nbsp;<br>Hvis&nbsp;ingen&nbsp;for</td>
-<td class=""><span class="cp-chord">B</span>&nbsp;&nbsp;<br>teller&nbsp;</td>
-<td class=""><span class="cp-chord">D#m</span>&nbsp;&nbsp;<br>Om&nbsp;ditt&nbsp;</td>
-<td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>ord&nbsp;</td>
-<td class=""><span class="cp-chord">C#/Bb</span>&nbsp;&nbsp;<br>&nbsp;</td></tr></tbody></table></div></div><br>
-<div class="cp-section"><div class="cp-heading">Refreng:</div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><br>Vekk&nbsp;meg&nbsp;</td>
-<td class=""><span class="cp-chord">B</span>&nbsp;&nbsp;<br>opp,</td>
-<td class=""><span class="cp-chord">D#m</span>&nbsp;&nbsp;<br>&nbsp;</td>
-<td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>opp</td>
-<td class=""><span class="cp-chord">C#</span>&nbsp;&nbsp;<br>&nbsp;</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><br>Send&nbsp;meg&nbsp;</td>
-<td class=""><span class="cp-chord">B</span>&nbsp;&nbsp;<br>ut&nbsp;</td>
-<td class=""><span class="cp-chord">D#m</span>&nbsp;&nbsp;<br></td>
-<td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>Der&nbsp;hvor&nbsp;du&nbsp;vil&nbsp;</td>
-<td class=""><span class="cp-chord">C#</span>&nbsp;&nbsp;<br>Gud</td></tr></tbody></table></div></div><br>
-<div class="cp-section"><div class="cp-heading">Vers 3:</div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><span class="cp-chord">B</span>&nbsp;&nbsp;<br>Du&nbsp;gav&nbsp;deg&nbsp;</td>
-<td class=""><span class="cp-chord">D#m</span>&nbsp;&nbsp;<br>selv&nbsp;i&nbsp;kjærlighet</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>For&nbsp;å&nbsp;frelse&nbsp;</td>
-<td class=""><span class="cp-chord">C#</span>&nbsp;&nbsp;<br>alle,&nbsp;hver&nbsp;og&nbsp;</td>
-<td class=""><span class="cp-chord">B</span>&nbsp;&nbsp;<br>en</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><br>Og&nbsp;jeg&nbsp;vet&nbsp;du&nbsp;</td>
-<td class=""><span class="cp-chord">D#m</span>&nbsp;&nbsp;<br>stadig&nbsp;er&nbsp;på&nbsp;let</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>For&nbsp;du&nbsp;elsker&nbsp;</td>
-<td class=""><span class="cp-chord">C#</span>&nbsp;&nbsp;<br>alle</td></tr></tbody></table></div></div><br>
-<div class="cp-section"><div class="cp-heading">Bro:</div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><br>Det&nbsp;jeg&nbsp;har&nbsp;erfart&nbsp;</td>
-<td class=""><span class="cp-chord">D#m7</span>&nbsp;&nbsp;<br>&nbsp;</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>Det&nbsp;vil&nbsp;jeg&nbsp;dele&nbsp;</td>
-<td class=""><span class="cp-chord">F#sus2/A#</span>&nbsp;&nbsp;<br>&nbsp;</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><br>Det&nbsp;som&nbsp;jeg&nbsp;har&nbsp;sett&nbsp;</td>
-<td class=""><span class="cp-chord">D#m7</span>&nbsp;&nbsp;<br>&nbsp;</td></tr></tbody></table></div>
-<div class=""><table class=""><tbody class=""><tr class=""><td class=""><span class="cp-chord">F#</span>&nbsp;&nbsp;<br>Alle&nbsp;må&nbsp;se&nbsp;det&nbsp;</td>
-<td class=""><span class="cp-chord">F#sus2/A#</span>&nbsp;&nbsp;<br>&nbsp;</td></tr></tbody></table></div></div><br></div><div class="cp-copyright-wrapper">2021 © Impuls<br>    «Vekk meg opp» er utgitt på Impuls album «Vekk meg opp» (2021)<br>    Husk å rapportere inn all offentlig bruk til TONO (www.tono.no) og CCLI (no.ccli.com)</div></p>
-                    </div>
+                      <p id="cp-target" class="dm-rendering-target"></p>
                   </div>
                 </div>
                 <div>
@@ -953,14 +890,14 @@
       initVidThumbs(true)
     </script>
 
-    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.1/scripts/lang.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.1/scripts/utils.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.1/scripts/cpToSheet.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.1/scripts/chordPro.types.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.1/scripts/chordPro.transposeLogic.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.1/scripts/chordPro.utils.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.1/scripts/chordPro.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.1/scripts/chordPro.song.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.5/scripts/lang.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.5/scripts/utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.5/scripts/cpToSheet.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.5/scripts/chordPro.types.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.5/scripts/chordPro.transposeLogic.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.5/scripts/chordPro.utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.5/scripts/chordPro.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mholta/chordpro-tools@1.1.5/scripts/chordPro.song.js"></script>
     <script src="song.js"></script>
 
     <script>

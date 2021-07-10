@@ -1469,7 +1469,7 @@ const initializeContributeForm = () => {
       },
       chordProBody: {
         labelText: "Sang",
-        detailesLabelText: "Se videoen over dersom du står fast.",
+        detailesLabelText: null,
         inputType: TEXTAREA,
         required: true,
         DOMElement: null,

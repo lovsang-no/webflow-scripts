@@ -9,6 +9,10 @@ const initializeSongPage = (songTemplate) => {
     "js-cart-fullscreen-settings"
   );
 
+  const chordProDisplayWrapper = document.getElementById(
+    "js-chord-pro-display-wrapper"
+  );
+
   let fullScreenChartOpen = false;
 
   const fullScreenChartCallback = () => {
@@ -126,34 +130,37 @@ const initializeSongPage = (songTemplate) => {
 
   const song = newSongObjectFromTemplate(text);
 
+  const state = [{ columns: 1 }];
+
+  const getState = () => state[0];
+  const setState = (newState) => (state[0] = newState);
+
+  const setColumns = (columnCount) => {
+    console.log(getState());
+    setState({ ...getState(), columns: columnCount ?? state.coluns });
+
+    console.log(getState());
+    const targetSongBody = target.querySelector(".cp-song-body");
+    targetSongBody.style.columns = 1;
+    if (columnCount !== 1)
+      setTimeout(() => {
+        targetSongBody.style.columns = getState().columns;
+      }, 5);
+  };
+  const noColumns = () => setColumns(1);
+  const twoColumns = () => setColumns(2);
+  const threeColumns = () => setColumns(3);
+
   const callback = () => {
-    target.innerHTML = songObjectToHtmlTable(song);
+    target.innerHTML = songObjectToHtmlTable(song, false, []);
     target.innerHTML += displayCopyrightPart(song) ?? "";
+    setColumns();
 
     cpPrintTarget.innerHTML = songObjectToHtmlTable(song);
     cpPrintTarget.innerHTML += displayCopyrightPart(song) ?? "";
   };
 
   song.setRenderCallback(callback);
-
-  const noColumns = () => {
-    target.classList.remove("cp-two-columns");
-    target.classList.remove("cp-three-columns");
-  };
-
-  const twoColumns = () => {
-    target.classList.remove("cp-three-columns");
-    setTimeout(() => {
-      target.classList.add("cp-two-columns");
-    }, 5);
-  };
-
-  const threeColumns = () => {
-    target.classList.remove("cp-two-columns");
-    setTimeout(() => {
-      target.classList.add("cp-three-columns");
-    }, 5);
-  };
 
   /* Regular view */
   document.querySelector("#one-column").onclick = noColumns;
@@ -175,6 +182,13 @@ const initializeSongPage = (songTemplate) => {
   };
   document.querySelector("#transpose-reset").onclick = () => {
     song.transposeReset();
+    song.capoReset();
+  };
+  document.querySelector("#capo-down").onclick = () => {
+    song.capoDown();
+  };
+  document.querySelector("#capo-up").onclick = () => {
+    song.capoUp();
   };
   /* Full screen */
   document
@@ -208,6 +222,13 @@ const initializeSongPage = (songTemplate) => {
   };
   document.querySelector("#fs-transpose-reset").onclick = () => {
     song.transposeReset();
+    song.capoReset();
+  };
+  document.querySelector("#fs-capo-down").onclick = () => {
+    song.capoDown();
+  };
+  document.querySelector("#fs-capo-up").onclick = () => {
+    song.capoUp();
   };
 
   /* S H A R E  -  E X P O R T */
@@ -296,8 +317,10 @@ const initializeSongPage = (songTemplate) => {
   });
 
   /* Copy ChordPro */
+  let copyTimeout;
+
   const getChordProString = () =>
-    songObjectToChordPro(song, true, false, true, ["COPYRIGHT"]);
+    songObjectToChordPro(song, true, false, true, ["T/M"]);
 
   const copyChordPro = () => {
     const copyText = document.createElement("input");
@@ -319,7 +342,29 @@ const initializeSongPage = (songTemplate) => {
       })
   );
 
-  /* Download ChordPro */
+  /* View ChordPro */
+
+  const handleClickOutsideElement = (element, onClickOutside) => {
+    // source (2021-07-09): https://stackoverflow.com/questions/152975/how-do-i-detect-a-click-outside-an-element
+    const outsideClickListener = (event) => {
+      if (!element.contains(event.target) && isVisible(element)) {
+        // or use: event.target.closest(selector) === null
+        if (onClickOutside) onClickOutside();
+        removeClickListener();
+      }
+    };
+
+    const removeClickListener = () => {
+      document.removeEventListener("click", outsideClickListener);
+    };
+
+    document.addEventListener("click", outsideClickListener);
+  };
+
+  const isVisible = (elem) =>
+    !!elem &&
+    !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length); // source (2018-03-11): https://github.com/jquery/jquery/blob/master/src/css/hiddenVisibleSelectors.js
+
   const generateFilename = (noHash = false) =>
     (song.metadata.title ?? "") +
     " - " +
@@ -330,30 +375,28 @@ const initializeSongPage = (songTemplate) => {
       : song.transposeLogic.getDisplayKey() ?? "") +
     ")";
 
-  const saveChordPro = () => {
+  const viewChordPro = () => {
     const chordPro = getChordProString() || "";
-    const blob = new Blob([chordPro], { type: "text/plain" });
-    const filename = generateFilename() + ".txt";
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("dm-form__input-field");
+    textarea.classList.add("monofont");
+    textarea.value = chordPro;
 
-    const link = document.createElement("a");
-    link.download = filename;
-    link.innerHTML = "Download File";
-    if (window.webkitURL !== null) {
-      // Chrome allows the link to be clicked without actually adding it to the DOM.
-      link.href = window.webkitURL.createObjectURL(blob);
-    } else {
-      // Firefox requires the link to be added to the DOM before it can be clicked.
-      link.href = window.URL.createObjectURL(blob);
-      link.onclick = destroyClickedElement;
-      link.style.display = "none";
-      document.body.appendChild(link);
-    }
-    link.click();
+    chordProDisplayWrapper.innerHTML = "";
+    chordProDisplayWrapper.appendChild(textarea);
+    chordProDisplayWrapper.classList.add("open");
+
+    if (copyTimeout) clearTimeout(copyTimeout);
+    copyTimeout = setTimeout(() => {
+      handleClickOutsideElement(textarea, () => {
+        chordProDisplayWrapper.classList.remove("open");
+      });
+    }, 10);
   };
 
   document
-    .querySelectorAll(".js-download-chordpro")
-    .forEach((e) => (e.onclick = saveChordPro));
+    .querySelectorAll(".js-display-chordpro")
+    .forEach((e) => (e.onclick = viewChordPro));
 
   /* U T I L S  */
 

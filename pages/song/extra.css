@@ -1,0 +1,96 @@
+.cp-meta-block {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.cp-meta-block .cp-meta {
+  text-align: right;
+}
+
+.cp-song-title {
+  font-weight: bold;
+  font-size: 21px;
+  margin-bottom: 0px;
+}
+
+.cp-song-artist {
+  font-size: 14px;
+  padding-bottom: 6px;
+}
+
+.cp-info-block {
+  font-family: "Noto Sans", sans-serif;
+  margin-right: 100px;
+  -webkit-column-span: all;
+  column-span: all;
+  height: 0px;
+  overflow: hidden;
+  margin-bottom: 0px;
+}
+
+.cp-chord {
+  font-weight: 500;
+  margin-bottom: -1em;
+}
+
+.cp-heading {
+  font-weight: bold;
+}
+
+.cp-section {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.cp-two-columns {
+  -webkit-column-count: 2; /* Chrome, Safari, Opera */
+  -moz-column-count: 2; /* Firefox */
+  column-count: 2;
+}
+.cp-three-columns {
+  -webkit-column-count: 3; /* Chrome, Safari, Opera */
+  -moz-column-count: 3; /* Firefox */
+  column-count: 3;
+}
+.cp-extra-meta-bottom {
+  font-size: 10px;
+}
+
+.cp-meta-wrapper {
+  position: relative;
+}
+
+.cp-key-tempo-wrapper {
+  position: absolute;
+  top: 0.4rem;
+  right: 2.6rem;
+}
+
+.chord-pro-preview {
+  display: none;
+}
+.chord-pro-preview.open {
+  display: block;
+  position: fixed;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.2);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chord-pro-preview.open > * {
+  max-width: 40rem;
+  background-color: #222;
+  height: 80%;
+}
+
+.monofont {
+  font-family: "Courier New", Courier, monospace;
+}
