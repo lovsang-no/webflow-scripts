@@ -785,7 +785,7 @@ const initializeContributeForm = () => {
             getState().songs[getState().songs.length - 1].songNumber || "0"
           ) + 1
         : 1,
-      artist: "",
+      artist: getState().artist.name,
       songType: "",
       themes: [],
       aboutSong: "",
@@ -796,6 +796,7 @@ const initializeContributeForm = () => {
       contributors: "",
       linkSpotify: "",
       linkAppleMusic: "",
+      videos: "",
       chart: {
         validState: false,
         key: "",
@@ -1162,8 +1163,8 @@ Intro:
         required: true,
         DOMElement: null,
         radioObjectList: [
-          { value: "Album", labelText: "Album (flere sanger)" },
-          { value: "Singel", labelText: "Singel (kun én sang)" },
+          { value: "album", labelText: "Album (flere sanger)" },
+          { value: "single", labelText: "Singel (kun én sang)" },
         ],
       },
       artist: {
@@ -1409,6 +1410,13 @@ Intro:
         labelText: "Link til sangen på Apple Music",
         detailesLabelText: null,
         inputType: TEXT,
+        required: false,
+        DOMElement: null,
+      },
+      videos: {
+        labelText: "Link til videoer (YouTube eller Vimeo) knyttet til sangen",
+        detailesLabelText: null,
+        inputType: TEXTAREA,
         required: false,
         DOMElement: null,
       },

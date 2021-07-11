@@ -187,7 +187,7 @@ const initializeSongPage = (songTemplate) => {
     song.capoUp();
   };
   /* Full screen */
-  document
+  /*   document
     .getElementById("js-chart-fullscreen-open")
     .addEventListener("click", () => {
       document.body.style.overflow = "hidden";
@@ -196,7 +196,7 @@ const initializeSongPage = (songTemplate) => {
     .getElementById("js-chart-fullscreen-close")
     .addEventListener("click", () => {
       document.body.style.overflow = "auto";
-    });
+    }); */
 
   document.querySelector("#fs-one-column").onclick = noColumns;
   document.querySelector("#fs-two-columns").onclick = twoColumns;
