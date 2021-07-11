@@ -187,16 +187,19 @@ const initializeSongPage = (songTemplate) => {
     song.capoUp();
   };
   /* Full screen */
-  /*   document
+  document
     .getElementById("js-chart-fullscreen-open")
     .addEventListener("click", () => {
       document.body.style.overflow = "hidden";
+      document.body.style.maxHeight = "80vh";
+      window.scroll(0, 0);
     });
   document
     .getElementById("js-chart-fullscreen-close")
     .addEventListener("click", () => {
       document.body.style.overflow = "auto";
-    }); */
+      document.body.style.maxHeight = "none";
+    });
 
   document.querySelector("#fs-one-column").onclick = noColumns;
   document.querySelector("#fs-two-columns").onclick = twoColumns;
